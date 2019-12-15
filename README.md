@@ -1,2 +1,2 @@
 # LeetCode
-LeetCode Problems solutions
+LeetCode Problems solutions in Java
