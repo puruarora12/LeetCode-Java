@@ -1,57 +1,33 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-        int rowsize = 9 , colsize = 9 ;
         
-        //HashMap<Character , Integer> rmap = new HashMap<>();
-        System.out.println("In row Check");
-        for(int row = 0 ; row <rowsize ;row++){
-            HashMap<Character , Integer> map = new HashMap<>();
-            for(int col = 0 ; col<colsize ; col++){
-                if(board[row][col]!='.')
-                    if(!map.containsKey(board[row][col]))
-                    map.put(board[row][col] , 1);
-                    else
-                        return false;
+        short[] rows = new short[9];
+        short[] cols = new short[9];
+        short[] squares = new short[9];
+     
+        for(int row =0 ; row<9 ; row++){
+            for(int col = 0 ; col<9 ; col++){
+                if(board[row][col]=='.')
+                    continue;
+                
+                short value  = (short) (1<<Integer.parseInt(""+board[row][col])-1);
+               
+                if((value & rows[row])>0)
+                    return false;
+                if((value & cols[col])>0)
+                    return false;
+                if((value & squares[3*(row/3)+(col/3)])>0)
+                    return false;
+                
+                rows[row] |=value;
+                cols[col] |=value;
+                squares[3*(row/3)+(col/3)] |=value;
             }
         }
-        System.out.println("Out row Check");
-        System.out.println("In col Check");
-        for(int col = 0 ; col <colsize ;col++){
-            HashMap<Character , Integer> map = new HashMap<>();
-            for(int row = 0 ; row<rowsize ; row++){
-                if(board[row][col]!='.')
-                    if(!map.containsKey(board[row][col]))
-                    map.put(board[row][col] , 1);
-                    else
-                        return false;
-            }
-        }
-        System.out.println("Out col Check");
-        System.out.println("In square Check");
-        
-        
-        int row = 0;
-        int col = 0;
-        for(int k =1 ; k<=9 ; k++ ){
-             HashMap<Character , Integer> map = new HashMap<>();
-         for(int i=0; i<3 ; i++){
-             for(int j = 0 ; j<3 ;j++){
-                if(board[row+i][col+j]!='.')
-                    if(!map.containsKey(board[row+i][col+j]))
-                    map.put(board[row+i][col+j] , 1);
-                    else
-                        return false;
-             }
-         }
-            col+=3;
-            if(col==9){
-                row+=3;
-                col=0;
-            }
-        }
-        System.out.println("Out square Check");
-        
         
         return true;
     }
 }
+
+
+
