@@ -14,7 +14,7 @@ class Solution {
         while(j<nums2.length)
             arr[k++]=nums2[j++];
         if(arr.length%2==0){
-            System.out.println(arr[arr.length/2]+"     "+arr[(arr.length/2)-1]);
+           // System.out.println(arr[arr.length/2]+"     "+arr[(arr.length/2)-1]);
             return ((arr[arr.length/2]+arr[(arr.length/2)-1]))/2.0;
         
         }else
