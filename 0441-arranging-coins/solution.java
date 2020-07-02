@@ -5,6 +5,8 @@ class Solution {
             n-=i;
             if (n>=0)
                 count++;
+            else
+                break;
             
         }
         return count;
