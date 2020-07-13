@@ -33,39 +33,14 @@ class Solution {
         if(flag==1)
                 ar.add(onetillnow);
         
-        for(long i:ar){
-           System.out.println(i+" ");
-           // String aaa = ""+(i*((i+1)/2));
-            //System.out.println(aaa);
+        for(long i:ar){          
         long sum=((i*(i+1))/2)%mod;
-          //  System.out.println(sum);
-            //count+=sum;
+          
             count+= sum%mod;
-            //count=count;
-           System.out.println("count is "+count);
+            
+           
         }
-        //System.out.println("total : "+total1);
-        
-       /* Collections.sort(ar);
-        long a=0;
-        a=total1;
-        System.out.println(ar.get(ar.size()-1));
-        for (int i =2 ; i<=ar.get(ar.size()-1) ; i++){
-            for (int j : ar){
-                a%=1000000007;
-                if(j==i)
-                    a++;
-                if(j>i)
-                    a+=j-1;
-            }
-        }
-        
-        
-        
-        System.out.println(a);
-    */
-        //System.out.println(count%mod);
-        //System.out.println((int)count);
+       
          return (int)(count%mod);   
         }
      
