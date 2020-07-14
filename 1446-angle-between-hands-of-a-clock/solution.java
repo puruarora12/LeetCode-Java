@@ -4,7 +4,7 @@ class Solution {
         double mdiff = minutes*6;
         
         double ans =Math.abs(mdiff-hdiff);
-       // System.out.println(ans);
+       
         return (ans)>180 ? Math.abs(360 -ans) : ans;
         
     }
