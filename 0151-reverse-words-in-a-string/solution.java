@@ -4,8 +4,7 @@ class Solution {
         String ans = "";
     
         
-        if (s.isEmpty())
-            return "";
+        
       
         for(int i = 0 ; i<ar.length;i++)
             if(!ar[i].isEmpty())
