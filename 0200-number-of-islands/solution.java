@@ -5,18 +5,8 @@ class Solution {
             for (int col = 0 ; col<grid[row].length ;col++){
                 if(grid[row][col]=='1'){
                    grid= calc1(row,col, grid);
-                    
-                  //  for (char[] a : grid ){
-                       // for(char b : a)
-                      //      System.out.print(b+" ");
-                        
-                    // System.out.println();
-                        
-                  //  }
                     count++;  
-                    
                 } 
-                //System.out.println(grid[row][col]);
                 
                 }
         }    
