@@ -1,41 +1,33 @@
 class Solution {
     public String longestPalindrome(String s) {
-        if (s.length()==1)
-            return s;
-        if (s.length()==2){
-            if(s.charAt(0)==s.charAt(1))
-                return s;
-            else return ""+s.charAt(0);
-            
-        }
-        
-        //boolean b=false;
-        String ans =""+s.charAt(0) ; 
-        for (int i= 0  ; i<s.length(); i++){
-            for(int j = s.length()-1 ; j>=i+ans.length() ; j--){
-                boolean b=false;
-                String sub =s.substring(i,j+1);
+        if (s.length()<1)
+            return "";
+            String ans = "";
+            int start=0,end=0 ,m=0;
+            for(int i =0 ; i<s.length() ; i++){
+                int s1 = checkp(s,i,i);
+                int s2 = checkp(s,i,i+1);
                 
-                if (s.charAt(i)==s.charAt(j) && s.charAt(i+1)==s.charAt(j-1) && sub.length()>ans.length())
-                     b = checkp(sub);
+                 m = Math.max(s1 ,s2);
+                System.out.println(i+" m is "+m);
+                if (m>end-start){
+                    start = i-(m-1)/2;
+                    end  = i+(m/2);
+                }
                 
-                  if (b && sub.length()>ans.length()){
-                     ans =sub;
-                 
+                
             }
-                        }
-        }
-   return ans;
+        return s.substring(start, end +1);
+        
     }
     
-    
-    
-    public static boolean checkp(String s){
+    public static int checkp(String s ,int start , int end){
+        if (s==null || start>end ) return 0;
         
-        for(int i = 0, j=s.length()-1 ; i<=(s.length()/2)  ; i++ , j--)
-            if (s.charAt(i)!= s.charAt(j))
-                return false;
-   
-    return true;
-}
+        while(start>=0 && end<s.length() && s.charAt(start)==s.charAt(end)){
+            start--;
+            end++;
+        }
+        return end -1 -start ;
+    }
 }
