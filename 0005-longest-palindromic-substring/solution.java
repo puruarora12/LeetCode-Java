@@ -15,14 +15,13 @@ class Solution {
             for(int j = s.length()-1 ; j>i ; j--){
                 boolean b=false;
                 String sub =s.substring(i,j+1);
-                //System.out.println("The len of sub is "+sub.length() + " the length of ans is "+ans.length());
-                if (s.charAt(i)==s.charAt(j) && sub.length()>ans.length())
+                
+                if (s.charAt(i)==s.charAt(j) && s.charAt(i+1)==s.charAt(j-1) && sub.length()>ans.length())
                      b = checkp(sub);
                 
                   if (b && sub.length()>ans.length()){
                      ans =sub;
-                 //System.out.println(ans);
-                   // System.out.println("i is "+i+" and j is "+j);
+                 
             }
                         }
         }
@@ -32,11 +31,11 @@ class Solution {
     
     
     public static boolean checkp(String s){
-        //System.out.println(s);
+        
         for(int i = 0, j=s.length()-1 ; i<=(s.length()/2)  ; i++ , j--)
             if (s.charAt(i)!= s.charAt(j))
                 return false;
-    //System.out.println("Returning True");
+   
     return true;
 }
 }
