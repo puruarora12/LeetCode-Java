@@ -12,7 +12,7 @@ class Solution {
         //boolean b=false;
         String ans =""+s.charAt(0) ; 
         for (int i= 0  ; i<s.length(); i++){
-            for(int j = s.length()-1 ; j>i ; j--){
+            for(int j = s.length()-1 ; j>=i+ans.length() ; j--){
                 boolean b=false;
                 String sub =s.substring(i,j+1);
                 
