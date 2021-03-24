@@ -12,22 +12,14 @@ class Solution {
     public ListNode reverseList(ListNode head) {
         if (head==null)
             return null;
-        ArrayList<Integer> ar = new ArrayList<>();
-        while(head.next!=null){
-            ar.add(head.val);
-            head = head.next;
-            
+        ListNode current =head;
+        ListNode prev = null;
+        while(current!=null){
+            ListNode n =current.next ;
+            current.next =prev;
+            prev = current;
+            current = n ; 
         }
-        ar.add(head.val);
-        Collections.reverse(ar);
-        for(int i : ar)
-            System.out.println(i);
-        ListNode rev = new ListNode();
-        ListNode revhead = rev;
-        for (int i : ar){
-        rev.next=new ListNode(i);  
-        rev =rev.next ;
-        }
-        return revhead.next;
+        return prev ;
     }
 }
