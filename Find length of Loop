@@ -95,9 +95,8 @@ class Solution
             }
         
         }
-        if (b==false)
-        return 0;
-        else{
+        if (b)
+      {
             count = 1; 
             fptr =fptr.next;
             while(sptr!=fptr){
