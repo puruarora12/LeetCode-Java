@@ -1,27 +1,15 @@
 class Solution {
     public int findLength(int[] nums1, int[] nums2) {
-        int count = Integer.MIN_VALUE;
-        for(int i = 0 ; i <nums1.length ; i++){
-            for(int j = 0 ; j 
-<nums2.length ; j++){
-                int size =0 ;
+        int max = 0 ;
+        int dp[][] = new int[nums1.length+1][nums2.length+1];
+        for(int i = 0 ; i<nums1.length ; i++){
+            for(int j = 0 ; j <nums2.length ; j++){
                 if (nums1[i]==nums2[j]){
-                   int new_j=checkmatch(nums1,nums2, i,j);
-                    size = new_j-j;
+                    dp[i+1][j+1] = dp[i][j]+1 ;
+                    max=Math.max(dp[i+1][j+1] ,max);
                 }
-                if(size>count)
-                    count =size;
             }
         }
-        return count;
-    }
-    
-    
-    public static int checkmatch(int num1[] , int num2[] , int i , int j){
-        while(i<num1.length && j<num2.length && num1[i]==num2[j]){
-            i++;
-            j++;
-        }
-        return j ;
+        return max;
     }
 }
