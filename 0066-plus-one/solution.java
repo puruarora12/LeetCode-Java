@@ -1,25 +1,24 @@
 class Solution {
     public int[] plusOne(int[] digits) {
-        digits[digits.length-1]+=1;
-        String ans ="";
-        for (int i =digits.length-1 ; i>0 ; i-- ){
-            
-            if(digits[i]>=10){
-                ans=digits[i]%10+ans;
-                digits[i]%=10;
-                digits[i-1]+=1;
-            }else{
-                return digits;
-            }
-        }
-        if(digits[0]>=10){
-            ans=digits[0]%10+ans;
-            ans="1"+ans;
-        
-        System.out.println(ans);
-       int fans[]=Stream.of(ans.split("")).mapToInt(strToken -> Integer.parseInt(strToken)).toArray();
-        return fans;
-        }else
-            return digits;
+        Stack<Integer> num = new Stack<Integer>();
+        int len = digits.length-1;
+        int sum = 0;
+        for(int i=len; i>=0 ; i--){
+            len=i;
+            sum = digits[i]+1;
+            if(sum>9) num.push(sum%10);
+            else{
+                num.push(sum);
+                break;
+            } 
+        } if(sum>9) num.push(1);
+       // System.out.println(num.size());
+        int ans[] = new int[len+num.size()];
+        //int j  =0 ;
+        for(int j=0 ; j<len ; j++) ans[j]=digits[j];
+        while(num.empty()!=true) {
+            ans[len++]=num.pop();
     }
+        return ans;
+}
 }
