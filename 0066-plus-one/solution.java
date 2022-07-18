@@ -12,9 +12,8 @@ class Solution {
                 break;
             } 
         } if(sum>9) num.push(1);
-       // System.out.println(num.size());
+      
         int ans[] = new int[len+num.size()];
-        //int j  =0 ;
         for(int j=0 ; j<len ; j++) ans[j]=digits[j];
         while(num.empty()!=true) {
             ans[len++]=num.pop();
