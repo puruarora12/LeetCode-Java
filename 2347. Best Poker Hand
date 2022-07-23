@@ -1,0 +1,22 @@
+class Solution {
+    public String bestHand(int[] ranks, char[] suits) {
+        int count = 1 ;
+        for(int i =1 ; i<suits.length ; i++) if(suits[i]==suits[i-1]) count++;
+        if(count==5 ) return "Flush";
+        count =0;
+        Arrays.sort(ranks);
+        int max = 1;
+        for(int i =1 ; i<5  ; i++){
+            if(ranks[i]==ranks[i-1]) max++;
+            else {
+                count=Math.max(max ,count);
+                max=1;
+            }
+        }
+        count=Math.max(max ,count);
+        
+        if(count>=3) return "Three of a Kind";
+        else if (count>=2) return "Pair";
+        else return "High Card";
+    }
+}
