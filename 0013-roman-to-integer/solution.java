@@ -1,11 +1,11 @@
 class Solution {
     public int romanToInt(String s) {
         int number =0;
-        boolean end = true;
+        //boolean end = true;
         ArrayList<String> pairs = new ArrayList<>(Arrays.asList("IV" ,  "IX" , "XL" , "XC" , "CD" , "CM"));
         for(int i = 0; i<s.length() ; i++){
-            if(i+1<s.length() && pairs.contains(s.substring(i,i+2))) {number+=convert(s.substring(i, i+2)); i++; end= false;}
-            else {number+=convert(s.substring(i,i+1)); end =true;}
+            if(i+1<s.length() && pairs.contains(s.substring(i,i+2))) {number+=convert(s.substring(i, i+2)); i++;}
+            else {number+=convert(s.substring(i,i+1)); }
         }
       //  if(end==false) number+=convert(s.charAt(s.length()-1)+"");
         return number;
