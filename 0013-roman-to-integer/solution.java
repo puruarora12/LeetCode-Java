@@ -1,13 +1,16 @@
 class Solution {
     public int romanToInt(String s) {
         int number =0;
-        //boolean end = true;
-        ArrayList<String> pairs = new ArrayList<>(Arrays.asList("IV" ,  "IX" , "XL" , "XC" , "CD" , "CM"));
-        for(int i = 0; i<s.length() ; i++){
-            if(i+1<s.length() && pairs.contains(s.substring(i,i+2))) {number+=convert(s.substring(i, i+2)); i++;}
-            else {number+=convert(s.substring(i,i+1)); }
+       int prev = Integer.MAX_VALUE; 
+           int curr =0;
+        for(int i = 0 ; i<s.length(); i++){
+            curr = convert(s.substring(i,i+1));
+            if(prev<curr) number=number-(prev*2);
+           // System.out.println(number+"   "+prev+"  "+curr);
+            number+=curr;
+            //System.out.println(number+"   "+prev+"  "+curr);
+            prev= curr;
         }
-      //  if(end==false) number+=convert(s.charAt(s.length()-1)+"");
         return number;
     }
     
@@ -20,12 +23,7 @@ class Solution {
         case "C" : return 100;
         case "D" : return 500;
         case "M" : return 1000;
-        case "IV" : return 4;
-        case "IX" : return 9;
-        case "XL" : return 40;
-        case "XC" : return 90;
-        case "CD" : return 400;
-        case "CM" : return 900;
+        
         }
         return 0;
     }
