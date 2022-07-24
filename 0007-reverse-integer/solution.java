@@ -1,16 +1,19 @@
 class Solution {
     public int reverse(int x) {
-        int number = Math.abs(x);
-        long revnumber =0;
-        while(number>0){
-            revnumber = revnumber*10+number%10;
-            number/=10;
+        boolean b = false;
+        if(x<0) b= true;
+        String nums = ""+x;
+        String s  = "";
+        
+        //StringBuilder sb = new StringBuilder();
+        for(int i =0 ; i<nums.length(); i++){
+            if(i==0 && nums.charAt(i)=='-' ) b=true;
+            else s=nums.charAt(i)+s ;
         }
-        if(x<0)
-            revnumber*=-1;
-        if(revnumber<Integer.MIN_VALUE || revnumber > Integer.MAX_VALUE)
-            return 0;
-        else
-            return (int)revnumber;
+        long num = Long.parseLong(s);
+       // System.out.println(num);
+        if(b) num*=-1;
+        if(num>Integer.MAX_VALUE || num<Integer.MIN_VALUE) return 0;
+        else return (int)num;
     }
 }
