@@ -10,18 +10,17 @@
  */
 class Solution {
     public int getDecimalValue(ListNode head) {
-        ListNode n = new ListNode();
-        n=head;
-        
-        String s = ""+n.val;
-        while(n.next!=null){
-            
-            n=n.next;
-        
-            
-            s=s+""+ n.val;
+        int num = 0;
+        boolean first =false;
+        while(head!=null){
+            if(head.val ==1 && first==false){
+                num =1 ;
+                first = true;
+            }
+            else if(head.val==0) num*=2;
+            else num=num*2+1;
+            head=head.next;
         }
-            int decimal=Integer.parseInt(s,2);
-            return decimal;
+        return num;
     }
 }
