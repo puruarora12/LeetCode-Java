@@ -1,24 +1,13 @@
 class MyCalendar {
-    ArrayList<Integer> start ;
-    ArrayList<Integer> end ;
+    TreeMap<Integer , Integer> m;
     public MyCalendar() {
-        start = new ArrayList<>();
-        end = new ArrayList<>();
+        m = new TreeMap<>();
     }
     
-    public boolean book(int s, int e) {
-      //System.out.println("processing "+s+"  "+e);
-        for(int i = 0 ; i<start.size() ; i++){
-           /* if((s>=start.get(i) && e<=end.get(i)) || 
-               (e>start.get(i)  && e<end.get(i))  || 
-               (s>=start.get(i) && s<end.get(i)) || 
-               (s<=start.get(i) && e>start.get(i))
-              )  return false; 
-            */
-            if((s>=start.get(i) && s<end.get(i)) || (e>start.get(i))  && e<=end.get(i) || (s<=start.get(i) && e>end.get(i)) ) return false;    
-        }
-        //System.out.println("                    added "+s+"   "+e);
-        start.add(s); end.add(e);
+    public boolean book(int start, int end) {
+        Map.Entry<Integer, Integer> e = m.lowerEntry(end);
+        if(e!=null && e.getValue()>start) return false;
+        m.put(start, end );
         return true;
     }
 }
