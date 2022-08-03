@@ -5,7 +5,7 @@ class MyCalendar {
     }
     
     public boolean book(int start, int end) {
-        Map.Entry<Integer, Integer> e = m.lowerEntry(end);
+        Map.Entry<Integer, Integer> e = m.floorEntry(end-1);
         if(e!=null && e.getValue()>start) return false;
         m.put(start, end );
         return true;
