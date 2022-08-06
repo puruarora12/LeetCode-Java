@@ -1,0 +1,11 @@
+class Solution {
+    public long countBadPairs(int[] nums) {
+        long count =0;
+        for(int j = 0 ; j<nums.length ; j++){
+            for(int i =0; i<j ; i++){
+                if(j-i!=nums[j]-nums[i] && i<j) count++;
+            }
+        }
+        return count;
+    }
+}
