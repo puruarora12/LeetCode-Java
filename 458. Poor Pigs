@@ -1,0 +1,9 @@
+class Solution {
+    public int poorPigs(int buckets, int minutesToDie, int minutesToTest) {
+        int iteration = minutesToTest/minutesToDie;
+        int count =0 ;
+        while(Math.pow((iteration+1),count)<buckets) count++;
+           
+        return count;
+    }
+}
