@@ -9,44 +9,29 @@
  * }
  */
 class Solution {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode n = new ListNode();
-        ListNode ans = n;
-        
-        while(l1!=null && l2!=null){
-          //  System.out.println("l1 is "+l1.val+" l2 is "+l2.val);
-            if (l1.val<l2.val){
-                ListNode temp  = new ListNode(l1.val , l1.next);
-                n.next=temp;
-                l1=l1.next;
-                
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode head= new ListNode();
+        ListNode temp =head ;
+        while(list1!=null && list2!=null){
+           // System.out.println("Before lista "+list1.val+"  listb "+list2.val +"  head "+head.val);
+            ListNode demo =new ListNode() ;
+            if(list1.val<list2.val) { 
+              //  System.out.println("in 1st if"); 
+                demo=list1;  
+                list1=list1.next; 
+            }else if(list1.val>=list2.val) { 
+                //System.out.println("in 2nd if"); 
+                demo=list2; 
+                list2=list2.next; 
             }
-            else{
-                ListNode temp  = new ListNode(l2.val , l2.next);
-                n.next=temp;
-                l2=l2.next;
-            }
-            n=n.next;
-            
+            head.next=demo;
+            head =head.next;
+           // System.out.println("After head "+head.val);
+           // System.out.println();
         }
+        if(list1!=null) head.next =list1;
+        if(list2!=null) head.next =list2;
         
-        while(l1!=null){
-            ListNode temp  = new ListNode(l1.val , l1.next);
-            n.next=temp;
-            n=n.next;
-            l1=l1.next;
-        }
-        
-        while(l2!=null){
-            ListNode temp  = new ListNode(l2.val , l2.next);
-            n.next=temp;
-            n=n.next;
-            l2=l2.next;
-        }
-        
-        return ans.next;
-        
-    
-
+        return temp.next;
     }
 }
