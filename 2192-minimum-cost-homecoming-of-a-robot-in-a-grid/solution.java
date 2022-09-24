@@ -4,8 +4,8 @@ class Solution {
         int dirx = homePos[0]<startPos[0] ? -1 : 1;
         int diry = homePos[1]<startPos[1] ? -1 : 1;
         
-        while(startPos[0]!=homePos[0]) { startPos[0]+=dirx ; cost+=rowCosts[startPos[0]]; }
-        while(startPos[1]!=homePos[1]) {startPos[1]+=diry ; cost+=colCosts[startPos[1]]; }
+        for (int i = startPos[0]+dirx ; i-dirx!=homePos[0] ; i+=dirx) { cost+=rowCosts[i]; }
+        for(int i =startPos[1]+diry ; i-diry!=homePos[1] ; i+=diry) { cost+=colCosts[i]; }
         return cost;
     }
 }
