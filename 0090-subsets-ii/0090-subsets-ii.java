@@ -10,7 +10,7 @@ class Solution {
             ArrayList<Integer> arr = new ArrayList<>(ar);
             Collections.sort(arr);
             if(!ans.contains(arr))
-            ans.add(new ArrayList<>(arr));
+            ans.add(arr);
             return ;
         }
         
