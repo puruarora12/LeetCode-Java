@@ -2,7 +2,7 @@ class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         boolean[] check = new boolean[nums.length];
-        Arrays.fill(check , true);
+        //Arrays.fill(check , true);
         findPermutes(0 , nums , ans , new ArrayList<>()  ,check );
         return ans;
     }
@@ -15,12 +15,12 @@ class Solution {
         }
         
         for(int i = 0 ; i<nums.length ; i++){
-            if(check[i]){
+            if(!check[i]){
                 ar.add(nums[i]);
-                check[i]=false;
+                check[i]=true;
                 findPermutes(i , nums, ans , ar ,check);
                 ar.remove(ar.size()-1);
-                check[i]=true;
+                check[i]=false;
             }
         }
     }
