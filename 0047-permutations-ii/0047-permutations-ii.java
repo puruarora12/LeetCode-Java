@@ -15,7 +15,8 @@ class Solution {
         }
         
         for(int i = 0 ; i<nums.length ; i++){
-            if(!check[i]){
+            if((i>0 && !check[i-1] && nums[i]==nums[i-1]) || check[i]) continue;
+            {
                 ar.add(nums[i]);
                 check[i]=true;
                 findPermutes(i , nums, ans , ar ,check);
