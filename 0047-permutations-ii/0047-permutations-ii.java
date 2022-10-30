@@ -2,6 +2,7 @@ class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         boolean[] check = new boolean[nums.length];
+        Arrays.sort(nums);
         //Arrays.fill(check , true);
         findPermutes(0 , nums , ans , new ArrayList<>()  ,check );
         return ans;
@@ -9,7 +10,7 @@ class Solution {
     
     private void findPermutes(int index, int[] nums, List<List<Integer>> ans , List<Integer> ar , boolean[] check){
         if(ar.size()==nums.length){
-            if(!ans.contains(ar))
+            //if(!ans.contains(ar))
             ans.add(new ArrayList<>(ar));
             return;
         }
