@@ -14,7 +14,7 @@ class StockSpanner {
             
             while(i>=0 && ar.get(i)<=price ){
                 sum+=track.get(i);
-                i=i-track.get(i);
+                i-=track.get(i);
                 }
             }
         track.add(sum);
