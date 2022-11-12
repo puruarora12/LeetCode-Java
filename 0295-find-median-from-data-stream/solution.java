@@ -1,20 +1,26 @@
 class MedianFinder {
-    ArrayList<Integer> ar;
-    /** initialize your data structure here. */
-    public MedianFinder() {
-      ar = new ArrayList<>();  
+
+   private PriorityQueue<Integer> small = new PriorityQueue<>(Collections.reverseOrder());
+private PriorityQueue<Integer> large = new PriorityQueue<>();
+private boolean even = true;
+
+public double findMedian() {
+    if (even)
+        return (small.peek() + large.peek()) / 2.0;
+    else
+        return small.peek();
+}
+
+public void addNum(int num) {
+    if (even) {
+        large.offer(num);
+        small.offer(large.poll());
+    } else {
+        small.offer(num);
+        large.offer(small.poll());
     }
-    
-    public void addNum(int num) {
-        ar.add(num);
-    }
-    
-    public double findMedian() {
-        Collections.sort(ar);
-        if(ar.size()%2==0){
-            return ((ar.get(ar.size()/2) + ar.get((ar.size()/2)-1))/2.0);
-        }else return ar.get(ar.size()/2)/1.0;
-    }
+    even = !even;
+}
 }
 
 /**
