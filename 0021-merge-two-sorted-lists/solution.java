@@ -10,28 +10,21 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode head= new ListNode();
-        ListNode temp =head ;
+        ListNode returnhead = new ListNode(0);
+        ListNode returnheader = returnhead;
         while(list1!=null && list2!=null){
-           // System.out.println("Before lista "+list1.val+"  listb "+list2.val +"  head "+head.val);
-            ListNode demo =new ListNode() ;
-            if(list1.val<list2.val) { 
-              //  System.out.println("in 1st if"); 
-                demo=list1;  
-                list1=list1.next; 
-            }else if(list1.val>=list2.val) { 
-                //System.out.println("in 2nd if"); 
-                demo=list2; 
-                list2=list2.next; 
+            if(list1.val<list2.val) {
+                returnhead.next=list1;
+                list1=list1.next;
+            }else{
+                 returnhead.next=list2;
+                list2=list2.next;
             }
-            head.next=demo;
-            head =head.next;
-           // System.out.println("After head "+head.val);
-           // System.out.println();
+            returnhead=returnhead.next;
         }
-        if(list1!=null) head.next =list1;
-        if(list2!=null) head.next =list2;
+        while(list1!=null){ returnhead.next=list1;  returnhead=returnhead.next; list1=list1.next; }
+        while(list2!=null){ returnhead.next=list2;  returnhead=returnhead.next; list2=list2.next; }
         
-        return temp.next;
+        return returnheader.next;
     }
 }
