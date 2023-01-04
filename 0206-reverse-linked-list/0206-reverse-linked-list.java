@@ -10,19 +10,18 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode temp =head;
-        ListNode prev= null;
-        ListNode curr =head;
+         ListNode temp =head;
+        ListNode prev = null;
+        ListNode curr = head;
         
         while(curr!=null){
-            temp=curr.next;
-            curr.next =prev;
-            prev =curr;
-            curr=temp;
-            //System.out.println("curr "+curr.val);
-            //System.out.println("prev "+ prev.val);
             
+            temp =curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
         }
+        
         return prev;
     }
 }
