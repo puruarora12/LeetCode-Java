@@ -20,11 +20,9 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-        //for(ListNode i : stack) System.out.println(i.val);
-        //System.out.println("slow.val is "+slow.val);
         Stack<ListNode> s1 =(Stack<ListNode>)stack.clone();
-        Stack<ListNode> s2 =(Stack<ListNode>)stack.clone();
-       return (checkPalindrome(slow, s1) ||  checkPalindrome(slow.next ,s2)); 
+        //Stack<ListNode> s2 =(Stack<ListNode>)stack.clone();
+       return (checkPalindrome(slow, s1) ||  checkPalindrome(slow.next ,stack)); 
     }
     
     public static boolean checkPalindrome(ListNode slow , Stack<ListNode> stack ){
