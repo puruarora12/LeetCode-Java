@@ -20,8 +20,8 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-        for(ListNode i : stack) System.out.println(i.val);
-        System.out.println("slow.val is "+slow.val);
+        //for(ListNode i : stack) System.out.println(i.val);
+        //System.out.println("slow.val is "+slow.val);
         Stack<ListNode> s1 =(Stack<ListNode>)stack.clone();
         Stack<ListNode> s2 =(Stack<ListNode>)stack.clone();
        return (checkPalindrome(slow, s1) ||  checkPalindrome(slow.next ,s2)); 
@@ -30,7 +30,7 @@ class Solution {
     public static boolean checkPalindrome(ListNode slow , Stack<ListNode> stack ){
         //if(flag==0) stack.pop(); 
         while(slow!=null && stack.size()!=0){
-            System.out.println(slow.val +"        "+stack.peek().val);
+           // System.out.println(slow.val +"        "+stack.peek().val);
            if(slow.val!=stack.pop().val) return false;
         slow=slow.next;
         }
