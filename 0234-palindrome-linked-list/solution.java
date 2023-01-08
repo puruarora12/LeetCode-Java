@@ -30,15 +30,17 @@ class Solution {
         Queue<ListNode> q = new LinkedList<>();
         Stack<ListNode> s = new Stack<>();
         
+        if(head==null || head.next==null) return true;
+        
         while(head!=null){
             s.push(head);
             q.add(head);
             head=head.next;
         }
+        int n = s.size();
+        while(q.size()!=0 && s.size()!=0 && s.pop().val==q.poll().val && s.size()>=n/2){continue;}
         
-        while(q.size()!=0 && s.size()!=0 && s.pop().val==q.poll().val){continue;}
-        
-        if(q.size()==0 && s.size()==0) return true; else return false;
+        if(q.size()==n/2-1 && s.size()==n/2-1) return true; else return false;
         
         
         
