@@ -10,6 +10,8 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
+       /*
+        
         ListNode slow  =head;
         ListNode fast =head;
         Stack<ListNode> stack = new Stack<>();
@@ -21,18 +23,33 @@ class Solution {
             fast = fast.next.next;
         }
         Stack<ListNode> s1 =(Stack<ListNode>)stack.clone();
-        //Stack<ListNode> s2 =(Stack<ListNode>)stack.clone();
-       return (checkPalindrome(slow, s1) ||  checkPalindrome(slow.next ,stack)); 
+        return (checkPalindrome(slow, s1) ||  checkPalindrome(slow.next ,stack)); 
+    */
+        
+        ListNode slow = head;
+        Queue<ListNode> q = new LinkedList<>();
+        Stack<ListNode> s = new Stack<>();
+        
+        while(head!=null){
+            s.push(head);
+            q.add(head);
+            head=head.next;
+        }
+        
+        while(q.size()!=0 && s.size()!=0 && s.pop().val==q.poll().val){continue;}
+        
+        if(q.size()==0 && s.size()==0) return true; else return false;
+        
+        
+        
     }
     
-    public static boolean checkPalindrome(ListNode slow , Stack<ListNode> stack ){
-        //if(flag==0) stack.pop(); 
-        while(slow!=null && stack.size()!=0){
-           // System.out.println(slow.val +"        "+stack.peek().val);
-           if(slow.val!=stack.pop().val) return false;
+   /* public static boolean checkPalindrome(ListNode slow , Stack<ListNode> stack ){
+       while(slow!=null && stack.size()!=0){
+            if(slow.val!=stack.pop().val) return false;
         slow=slow.next;
         }
         
        if(slow==null && stack.size()==0) return true; else return false;
-    }
+    } */
 }
