@@ -8,7 +8,7 @@ class Solution {
             return 0;
         }
         for(int index = 0 ; index<nums1.length ; index++){
-            System.out.println("nums1 "+nums1[index]+"   nums2  "+nums2[index]);
+            //System.out.println("nums1 "+nums1[index]+"   nums2  "+nums2[index]);
             if(nums1[index] ==nums2[index]) continue;
             
             
@@ -32,9 +32,9 @@ class Solution {
                 else return -1;
             }
             
-            System.out.println(operations);
+            //System.out.println(operations);
         }
-        System.out.println("/////////////////////////////");
+        //System.out.println("/////////////////////////////");
         for(int i = 0 ; i<nums1.length ; i++) if(nums1[i]!=nums2[i]) return -1;
         if(count==0) return operations/2;
         else return -1;
