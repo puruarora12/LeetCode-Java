@@ -1,32 +1,27 @@
 class Solution {
     public int maxCount(int[] banned, int n, int maxSum) {
-        int index = 0 ; 
-        int value = 1;
-        int maxsum = 0;
-        int returnvalue = 0 ;
-        Arrays.sort(banned);
-        HashSet<Integer> set = new HashSet<>();
-        for(int i: banned){
-           // System.out.print(i+" ");
-            if(!set.contains(i)) set.add(i);
+       Set<Integer> bannedSet = new HashSet<>();
+        for (int num : banned) {
+            bannedSet.add(num);
         }
-       // System.out.println();
         
-        while(maxsum+value<=maxSum && value<=n){
-            if(!set.contains(value)){
-                //System.out.println("before value "+value + " maxvalue "+maxsum+ "  returnvalue "+returnvalue);
-                returnvalue++;
-                maxsum+=value;
-                value++;
-                
-                //System.out.println("after value "+value + " maxvalue "+maxsum+ "  returnvalue "+returnvalue);
-                
-            }
-            else{
-                //index++;
-                value++;
+        int[] possibleChoices = new int[n];
+        int k = 0;
+        for (int i = 1; i <= n; i++) {
+            if (!bannedSet.contains(i)) {
+                possibleChoices[k++] = i;
             }
         }
-     return returnvalue;   
+        
+        int choices = 0;
+        for (int i = 0; i < k; i++) {
+            if (possibleChoices[i] > maxSum) {
+                break;
+            }
+            choices++;
+            maxSum -= possibleChoices[i];
+        }
+        
+        return choices;
     }
 }
