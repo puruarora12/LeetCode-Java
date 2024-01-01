@@ -1,19 +1,18 @@
 class Solution {
     public int findContentChildren(int[] g, int[] s) {
-        int ssize = s.length;
-        Arrays.sort(s);
         Arrays.sort(g);
-        int i = 0 ;
-        Queue<Integer> q = new LinkedList<>();
-        for(int j :s)q.add(j);
+        Arrays.sort(s);
+        int ans = 0 ; 
+        int i = g.length-1;
+        int j = s.length -1;
         
-        while(i<g.length){
-            if(q.isEmpty()) break;
-            //System.out.println("g is "+g[i]+"  q is "+q.peek());
-            if(g[i]<=q.peek()) {q.poll(); i++;}
-            else q.poll();
+        while(i>=0 && j>=0 ){
+            if(g[i]<=s[j]){
+                j--;
+                ans++;
+            }
+            i--;
         }
-        //System.out.println(i);
-        return i;
+        return ans;
     }
 }
