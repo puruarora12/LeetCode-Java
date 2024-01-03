@@ -18,7 +18,7 @@ class Solution {
             
             if(prev!=0 && next!=0){
                 lasers += prev*next;
-                System.out.println(prev+"   "+next);
+                //System.out.println(prev+"   "+next);
                 prev= next;
                 next= 0;
             }
