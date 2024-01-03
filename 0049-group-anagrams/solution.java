@@ -15,11 +15,9 @@ class Solution {
              //String pos = StringcontainsKey(map, strs[i]);
             if(map.containsKey(chars)){
                 //System.out.println(" int map contains "+chars);
-               int pos = map.get(chars);
-               // System.out.println("the pos is "+map.get(chars));7t5
                
                 
-                ans.get(pos).add(strs[i]);
+                ans.get(map.get(chars)).add(strs[i]);
                 //words.add(strs[i]);
                 //map.put(pos , words);
                 
@@ -44,13 +42,5 @@ class Solution {
         return ans;
     }
     
-    public static String StringcontainsKey(HashMap<String , Integer> map , String word){
-        for(String i:map.keySet()){
-            if(i.equals(word.chars()
-      .sorted()
-      .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-      .toString())) return i;
-        }
-        return null;
-    }
+    
 }
