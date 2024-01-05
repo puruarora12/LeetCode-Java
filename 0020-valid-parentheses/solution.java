@@ -1,17 +1,15 @@
 class Solution {
-    public boolean isValid(String s) {
-        Stack<Character> brackets =  new Stack<>();
-        for(char i: s.toCharArray()){
-            if( i=='('  || i=='{' || i=='[')
-                brackets.push(i);
-            else {
-                if(brackets.isEmpty()) return false;
-                else if(i==')' && brackets.peek()!='(') return false;
-                else if(i=='}' && brackets.peek()!='{') return false;
-                else if(i==']' && brackets.peek()!='[') return false;
-                else brackets.pop();
-            }
+    public boolean isValid(String w) {
+        Stack<Character> s = new Stack<>();
+        for(int i = 0 ; i <w.length() ; i++){
+            if(w.charAt(i)=='(')s.push(w.charAt(i));
+            if(w.charAt(i)=='[')s.push(w.charAt(i));
+            if(w.charAt(i)=='{')s.push(w.charAt(i));
+            if(w.charAt(i)=='}')if(!s.isEmpty() && s.peek()=='{')s.pop();else return false;
+            if(w.charAt(i)==']')if(!s.isEmpty() && s.peek()=='[')s.pop();else return false;
+            if(w.charAt(i)==')')if(!s.isEmpty() && s.peek()=='(')s.pop();else return false;
         }
-        return brackets.isEmpty() ? true: false ;
+        if(s.isEmpty()) return true;
+        else return false;
     }
 }
