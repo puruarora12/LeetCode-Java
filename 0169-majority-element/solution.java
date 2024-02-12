@@ -1,10 +1,12 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        Arrays.sort(nums);
-        for(int i = 0 ; i<nums.length- nums.length/2 ; i++){
-            //System.out.println(i+"   "+(i+(int)Math.floor(nums.length/2)));
-            if(nums[i]==nums[i+(int)Math.floor(nums.length/2)]) return nums[i];
+        int count = 0 ;
+         int majority =0 ; 
+        for(int i =0 ; i <nums.length ; i++){
+            if(count==0 )majority=nums[i];
+            if(majority==nums[i])count++;
+            else count --;
         }
-        return -1;
+        return majority;
     }
 }
