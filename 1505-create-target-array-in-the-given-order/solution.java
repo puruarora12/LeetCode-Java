@@ -5,7 +5,9 @@ class Solution {
         for(int i = 0 ; i <index.length ; i++){
             ar.add(index[i] , nums[i]);
         }
-        int[] ans = ar.stream().mapToInt(i -> i).toArray();
+        int[] ans = new int[nums.length];
+        for(int i = 0  ;i<nums.length ; i++)
+        ans[i]=ar.get(i);
         return ans;
     }
 }
