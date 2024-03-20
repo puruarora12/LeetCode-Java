@@ -18,7 +18,7 @@ class Solution {
         while(a-->1){ slow = slow.next ; fast=fast.next;}
         fast=fast.next;
         
-        System.out.println(slow.val+"   "+fast.val);
+        //System.out.println(slow.val+"   "+fast.val);
         
         slow.next =list2;
         ListNode l2 = list2;
