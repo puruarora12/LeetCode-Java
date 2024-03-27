@@ -19,8 +19,8 @@ class Solution {
         for(int i= 0;i<nums.length ; i++){
             if(nums[Math.abs(nums[i])-1]>0) nums[Math.abs(nums[i])-1]*=-1;
         }
-         for(int i :nums)System.out.print(i+"  ");
-        System.out.println();
+        //  for(int i :nums)System.out.print(i+"  ");
+        // System.out.println();
         int i = 0 ;
        
         for(i = 0 ; i<nums.length ; i++){
