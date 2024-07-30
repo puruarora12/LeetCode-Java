@@ -1,5 +1,6 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
+        // 3/7 to inspection.
         int left[] = new int[nums.length];
         int right[] = new int[nums.length];
         left[0]=nums[0]; right[nums.length-1]=nums[nums.length-1];
