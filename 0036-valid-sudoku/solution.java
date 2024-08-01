@@ -1,33 +1,54 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-        
-        short[] rows = new short[9];
-        short[] cols = new short[9];
-        short[] squares = new short[9];
-     
-        for(int row =0 ; row<9 ; row++){
-            for(int col = 0 ; col<9 ; col++){
-                if(board[row][col]=='.')
-                    continue;
+        for(int i = 0 ; i<9 ; i++){
+            HashSet<Character> setij = new HashSet<>();
+            HashSet<Character> setji = new HashSet<>();
+            for(int j = 0 ; j<9 ; j++){
+                // System.out.println(i +"   "+j);
+                if (setij.contains(board[i][j])) return false;
+                else if (board[i][j]=='.') ;
+                else setij.add(board[i][j]);
                 
-                short value  = (short) (1<<Integer.parseInt(""+board[row][col])-1);
-               
-                if((value & rows[row])>0)
-                    return false;
-                if((value & cols[col])>0)
-                    return false;
-                if((value & squares[3*(row/3)+(col/3)])>0)
-                    return false;
-                
-                rows[row] |=value;
-                cols[col] |=value;
-                squares[3*(row/3)+(col/3)] |=value;
+                if (setji.contains(board[j][i]) )return false;
+                else if (board[j][i]=='.') ;
+                else setji.add(board[j][i]);
             }
         }
-        
-        return true;
+        // int r = 0 ;
+        // System.out.println("Till here");
+        int c = 0 ;
+        int r =0;
+        for(int i =0 ; i<3 ; i++){
+           // c=0;
+            for(int j =0 ; j<3 ; j++){
+                 r=i*3;
+                 HashSet<Character> set = new HashSet<>();
+                for(int x =0 ; x<3 ; x++ ){
+                     
+                     // System.out.println("j is "+j+" x is "+x+"       "+ r+"  "+c);
+                        if (set.contains(board[r][c])) return false;
+                        else if (board[r][c]=='.') ;
+                        else set.add(board[r][c]);
+                    
+                    if (set.contains(board[r+1][c]) )return false;
+                        else if (board[r+1][c]=='.') ;
+                        else set.add(board[r+1][c]);
+                    
+                    if (set.contains(board[r+2][c])) return false;
+                        else if (board[r+2][c]=='.') ;
+                        else set.add(board[r+2][c]);
+                    // System.out.println("checked "+r+""+c +" "+(r+1)+""+c+" "+(r+2)+""+c);
+                    c++;
+                   
+                
+            }
+                // System.out.println() ;               
+              
+        }
+           // System.out.println("///////////////////////////////////");                   
+c=0;
+        }
+            return true;
+            
     }
 }
-
-
-
