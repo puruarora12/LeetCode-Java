@@ -1,5 +1,6 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
+        // 5/7 inspection
         Arrays.sort(nums);
         int max =0;
         int len =1 ;
