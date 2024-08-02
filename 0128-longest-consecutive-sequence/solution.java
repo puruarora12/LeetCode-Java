@@ -1,12 +1,13 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
         // 5/7 inspection
+        int n =nums.length;
         Arrays.sort(nums);
         int max =0;
         int len =1 ;
-        if(nums.length<=1)return nums.length;
+        if(n<=1)return n;
         int num =nums[0];
-        for(int i =1 ; i<nums.length ; i++){
+        for(int i =1 ; i<n ; i++){
             if(nums[i]==num+1){
                 len++;
                 num++;
