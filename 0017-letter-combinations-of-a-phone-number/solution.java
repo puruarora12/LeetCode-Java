@@ -12,8 +12,12 @@ class Solution {
             }
             else{
                 for(int index =0 ; index<words ; index++){
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(comb.get(0));
                     for(int pos = 0 ; pos<chrs.length ; pos++){
-                        comb.add(comb.get(0)+chrs[pos]);
+                        sb.append(chrs[pos]);
+                        comb.add(sb.toString());
+                        sb.deleteCharAt(sb.length()-1);
                     }
                     comb.remove(0);
                 }
