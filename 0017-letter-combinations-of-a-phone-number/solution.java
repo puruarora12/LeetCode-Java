@@ -15,12 +15,16 @@ class Solution {
                 for (int pos = 0 ; pos<chrs.length ; pos++) comb.add(chrs[pos]);
             }
             else{
-                for(int pos = 0 ; pos<chrs.length ; pos++)
-                    for(int index =0 ; index<words ; index++){
-                        comb.add(comb.get(index)+chrs[pos]); 
+                for(int index =0 ; index<words ; index++){
+                    for(int pos = 0 ; pos<chrs.length ; pos++){
+                        comb.add(comb.get(0)+chrs[pos]);
+                        // comb.remove(0);
+                    }
+                    // System.out.println(comb);
+                    comb.remove(0);
                 }
-                //System.out.println(comb);
-                for(int index =0 ; index<words ; index++) comb.remove(0);
+                // System.out.println(comb);
+                // for(int index =0 ; index<words ; index++) comb.remove(0);
                 //System.out.println(comb);
             }
         }
