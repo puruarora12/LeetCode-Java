@@ -2,11 +2,7 @@ class Solution {
     public List<String> letterCombinations(String digits) {
         
         int numlen = digits.length();
-        // int words = 1 ;
-        // for(char i : digits.split("")){
-        //     if(i=='7' || i=='9') words *=4;
-        //     else words*=3;
-        // }
+      
         List<String> comb = new ArrayList<>();
         for(int i =0 ; i<numlen; i++){
             int words = comb.size();
@@ -18,14 +14,10 @@ class Solution {
                 for(int index =0 ; index<words ; index++){
                     for(int pos = 0 ; pos<chrs.length ; pos++){
                         comb.add(comb.get(0)+chrs[pos]);
-                        // comb.remove(0);
                     }
-                    // System.out.println(comb);
                     comb.remove(0);
                 }
-                // System.out.println(comb);
-                // for(int index =0 ; index<words ; index++) comb.remove(0);
-                //System.out.println(comb);
+               
             }
         }
         return comb;
