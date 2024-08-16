@@ -21,11 +21,9 @@ class Solution {
                 sum+=temp.val;
                 temp=temp.next;
             }
-            // System.out.println("before temp "+temp.val+"   head "+head.val+"  a "+a.val);
             a.next =new ListNode(sum);
             a=a.next;
             head=temp;
-            // System.out.println("after temp "+temp.val+"   head "+head.val+"  a "+a.val);
             
         }
         
