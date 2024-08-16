@@ -1,7 +1,11 @@
 class Solution {
     public int minimumOperations(int[] nums) {
-        int sum =0;
-        for(int i:nums) sum+=Math.min(3-i%3, i%3);
-        return sum;
+        int ans = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] % 3 != 0) {
+                ans++;
+            }
+        }
+        return ans;
     }
 }
