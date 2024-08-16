@@ -5,8 +5,6 @@ class Solution {
         TreeMap<Integer, List<Integer>> maxs = new TreeMap<>();
         int pos= 0;
         for(List<Integer> i: arrays){
-            // mins[pos]= i.get(0);
-            // maxs[pos]=i.get(i.size()-1);
               int isize = i.size()-1;
             
                 
@@ -14,30 +12,19 @@ class Solution {
                 milist.add(pos);
                 mins.put(i.get(0), milist);
         
-            
-              
-                
                 List<Integer> malist= maxs.getOrDefault(i.get(isize) , new ArrayList<>());
                 malist.add(pos);
                 maxs.put(i.get(i.size()-1), malist);
-       
-//             
-            // List<Integer> malist = new ArrayList<>();
-            
-            // maxs.put(i.get(i.get(i.size()-1)), maxs.getOrDefault(i.get(i.get(i.size()-1)), malist).add(pos));
-            pos++;
-            
-            
-            
-           
+
+                pos++;
+
         }
-        // System.out.println(arrays.size());
-        int left = 0 ;
-        
+
+        int left = 0 ; 
         int diff= 0;
         Object[] mi = mins.keySet().toArray();
         Object[] ma = maxs.keySet().toArray();
-        // System.out.println(mi.length);
+      
         int right = ma.length-1;
         // System.out.println(mins.keySet());
         // System.out.println(maxs.keySet());
@@ -51,7 +38,7 @@ class Solution {
             }
             else if (mins.get(mi[left]).equals(maxs.get(ma[right])) && left==right ) {
                 // System.out.println("in if "); 
-                diff= Math.max(Math.abs((int)mi[left]-(int)ma[right]),diff); 
+                diff= Math.abs((int)mi[left]-(int)ma[right]); 
                 break;
             }
             else if( (int)mi[left+1]- (int)mi[left]<= (int)ma[right]-(int)ma[right-1]) {
@@ -67,10 +54,7 @@ class Solution {
             
              // System.out.println(left+" "+right);
         }
-        // if(!mins.get(mi[left]).equals(maxs.get(ma[right])))  diff= Math.max(Math.abs((int)mi[left]-(int)ma[right]),diff);
+       
         return diff;
-        
-        
-        // return Math.abs(max-min);
     }
 }
