@@ -26,33 +26,24 @@ class Solution {
         Object[] ma = maxs.keySet().toArray();
       
         int right = ma.length-1;
-        // System.out.println(mins.keySet());
-        // System.out.println(maxs.keySet());
         while(left<=right){
-            // System.out.println(left+" "+right);
-            // System.out.println("left element "+mi[left]+" index "+mins.get(mi[left])+"    right element "+ma[right]+" index  "+maxs.get(ma[right]));
+          
             if(left<mi.length && right>=0 &&(!mins.get(mi[left]).equals(maxs.get(ma[right])) || (mins.get(mi[left]).size()+maxs.get(ma[right]).size()>=3)))  {
-                // System.out.println("in if "); 
                 diff= Math.abs((int)mi[left]-(int)ma[right]); 
                 break;
             }
             else if (mins.get(mi[left]).equals(maxs.get(ma[right])) && left==right ) {
-                // System.out.println("in if "); 
                 diff= Math.abs((int)mi[left]-(int)ma[right]); 
                 break;
             }
             else if( (int)mi[left+1]- (int)mi[left]<= (int)ma[right]-(int)ma[right-1]) {
-                // System.out.println("in left "+( (int)mi[left+1]- (int)mi[left]) +"    "+((int)ma[right]-(int)ma[right-1])) ;
                 left++;
             } 
             else if( (int)mi[left+1]- (int)mi[left]>(int)ma[right]-(int)ma[right-1]){
-                // System.out.println("in right "+( (int)mi[left+1]- (int)mi[left]) +"    "+((int)ma[right]-(int)ma[right-1])) ;
                 right--;
             }
             else break;
             
-            
-             // System.out.println(left+" "+right);
         }
        
         return diff;
