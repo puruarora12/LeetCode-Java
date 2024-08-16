@@ -8,7 +8,6 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-import java.math.BigInteger;
 class Solution {
     public ListNode insertGreatestCommonDivisors(ListNode head) {
         ListNode ans = head;
@@ -29,11 +28,10 @@ class Solution {
         
         return ans;
     }
-    public static int gcd(int a, int b)
+    static int gcd(int a, int b)
     {
-        BigInteger bigA = BigInteger.valueOf(Math.abs(a));
-        BigInteger bigB = BigInteger.valueOf(Math.abs(b));
-        BigInteger gcd = bigA.gcd(bigB);
-        return gcd.intValue();
+      if (b == 0)
+        return a;
+      return gcd(b, a % b); 
     }
 }
