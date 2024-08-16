@@ -1,51 +1,31 @@
 class Solution {
     public int maxDistance(List<List<Integer>> arrays) {
-       
-        TreeMap<Integer, List<Integer>> mins = new TreeMap<>();
-        TreeMap<Integer, List<Integer>> maxs = new TreeMap<>();
-        int pos= 0;
-        for(List<Integer> i: arrays){
-              int isize = i.size()-1;
-            
-                
-                List<Integer> milist= mins.getOrDefault(i.get(0) , new ArrayList<>());
-                milist.add(pos);
-                mins.put(i.get(0), milist);
-        
-                List<Integer> malist= maxs.getOrDefault(i.get(isize) , new ArrayList<>());
-                malist.add(pos);
-                maxs.put(i.get(i.size()-1), malist);
+        int min = Integer.MAX_VALUE;
+        int minIdx = -1;
+        int secMin = min;
+        int max = Integer.MIN_VALUE;
+        int maxIdx = -1;
+        int secMax = max;
+        for (int i = 0; i < arrays.size(); i++) {
+            List<Integer> arr = arrays.get(i);
+            int curMin = arr.get(0);
+            int curMax = arr.get(arr.size() - 1);
+            if (min > curMin) {
+                secMin = min;
+                min = curMin;
+                minIdx = i;
+            } else if (secMin > curMin) {
+                secMin = curMin;
+            }
 
-                pos++;
-
+            if (max < curMax) {
+                secMax = max;
+                max = curMax;
+                maxIdx = i;
+            } else if (secMax < curMax) {
+                secMax = curMax;
+            }
         }
-
-        int left = 0 ; 
-        int diff= 0;
-        Object[] mi = mins.keySet().toArray();
-        Object[] ma = maxs.keySet().toArray();
-      
-        int right = ma.length-1;
-        while(left<=right){
-          
-            if(left<mi.length && right>=0 &&(!mins.get(mi[left]).equals(maxs.get(ma[right])) || (mins.get(mi[left]).size()+maxs.get(ma[right]).size()>=3)))  {
-                diff= Math.abs((int)mi[left]-(int)ma[right]); 
-                break;
-            }
-            else if (mins.get(mi[left]).equals(maxs.get(ma[right])) && left==right ) {
-                diff= Math.abs((int)mi[left]-(int)ma[right]); 
-                break;
-            }
-            else if( (int)mi[left+1]- (int)mi[left]<= (int)ma[right]-(int)ma[right-1]) {
-                left++;
-            } 
-            else if( (int)mi[left+1]- (int)mi[left]>(int)ma[right]-(int)ma[right-1]){
-                right--;
-            }
-            else break;
-            
-        }
-       
-        return diff;
+        return minIdx == maxIdx ? Math.max(max-secMin, secMax-min) : max - min;
     }
 }
