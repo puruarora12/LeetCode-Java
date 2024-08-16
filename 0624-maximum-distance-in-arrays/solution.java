@@ -1,9 +1,6 @@
 class Solution {
     public int maxDistance(List<List<Integer>> arrays) {
-        int min =Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        // int[] mins= new int[arrays.size()];
-        // int[] maxs = new int[arrays.size()];
+       
         TreeMap<Integer, List<Integer>> mins = new TreeMap<>();
         TreeMap<Integer, List<Integer>> maxs = new TreeMap<>();
         int pos= 0;
@@ -32,8 +29,7 @@ class Solution {
             
             
             
-            if(i.get(0) <min)min=i.get(0);
-            if(i.get(i.size()-1)>max) max = i.get(i.size()-1);
+           
         }
         // System.out.println(arrays.size());
         int left = 0 ;
