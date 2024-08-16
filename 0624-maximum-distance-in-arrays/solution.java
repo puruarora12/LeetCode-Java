@@ -80,7 +80,7 @@ class Solution {
             
              // System.out.println(left+" "+right);
         }
-        if(!mins.get(mi[left]).equals(maxs.get(ma[right])))  diff= Math.max(Math.abs((int)mi[left]-(int)ma[right]),diff);
+        // if(!mins.get(mi[left]).equals(maxs.get(ma[right])))  diff= Math.max(Math.abs((int)mi[left]-(int)ma[right]),diff);
         return diff;
         
         
