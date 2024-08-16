@@ -10,29 +10,20 @@ class Solution {
         for(List<Integer> i: arrays){
             // mins[pos]= i.get(0);
             // maxs[pos]=i.get(i.size()-1);
-            List<Integer> milist ;
-            if(!mins.containsKey(i.get(0))){
-                
-                milist= new ArrayList<>();
-                milist.add(pos);
-                mins.put(i.get(0), milist);
-        }else{ 
-                milist = (mins.get(i.get(0)));
-                milist.add(pos);
-                mins.put(i.get(0), milist);
-            }
+              int isize = i.size()-1;
             
-               if(!maxs.containsKey(i.get(i.size()-1))){
                 
-                List<Integer> malist = new ArrayList<>();
+                List<Integer> milist= mins.getOrDefault(i.get(0) , new ArrayList<>());
+                milist.add(pos);
+                mins.put(i.get(0), milist);
+        
+            
+              
+                
+                List<Integer> malist= maxs.getOrDefault(i.get(isize) , new ArrayList<>());
                 malist.add(pos);
                 maxs.put(i.get(i.size()-1), malist);
-        }else{  
-                   List<Integer> malist=maxs.get(i.get(i.size()-1));//.add(pos);
-                   malist.add(pos);
-                maxs.put(i.get(i.size()-1), malist);
-            }
-            
+       
 //             
             // List<Integer> malist = new ArrayList<>();
             
