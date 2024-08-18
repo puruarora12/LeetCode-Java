@@ -5,7 +5,7 @@ class Solution {
         while(n%3==0)n/=3;
         while(n%5==0)n/=5;
         System.out.println(n);
-        if(n==1 || n==0 ) return true;
+        if(n==1 ) return true;
         return false;
     }
 }
