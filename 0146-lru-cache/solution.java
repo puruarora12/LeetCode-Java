@@ -28,14 +28,12 @@ HashMap<Integer, node> map = new HashMap<>();
         }
     }
     public void remove(node n){
-        // System.out.println(n.)
-        // System.out.println("node prev "+ n.prev.key + " prev node val "+ n.prev.val + " n next key " + n.next.key + "   val "+ n.next.val );
+      
         node prevNode = n.prev;
         node nextNode = n.next;
         prevNode.next = nextNode;
         nextNode.prev = prevNode;
-        // System.out.println();
-        // print();
+       
     }
 
     public void add(node n){
@@ -47,15 +45,14 @@ HashMap<Integer, node> map = new HashMap<>();
     }
 
     public int get(int key) {
-        // System.out.println("getting value");
+       
         if (map.containsKey(key)){
             int value =  map.get(key).val;
             remove(map.get(key));
             node n = new node(key, value);
             add(n);
             map.put(key, n);
-            // System.out.println("after get");
-            // print();
+            
             return value;
         }else return -1;
     }
@@ -64,8 +61,7 @@ HashMap<Integer, node> map = new HashMap<>();
         
         node n = new node(key, value);
         if (map.containsKey(key)){
-            // System.out.println(map.get(key).val);
-            // print();
+           
             remove(map.get(key));
         }
         else if (map.size()>=cap){
@@ -75,9 +71,7 @@ HashMap<Integer, node> map = new HashMap<>();
         }
         add(n);
         map.put(key, n);
-        // System.out.println("after put");
-        // System.out.println(map);
-        // print();
+   
     }
 }
 
