@@ -1,42 +1,27 @@
 class Solution {
     public int numIslands(char[][] grid) {
-    int count = 0;
-        for(int row =0 ; row<grid.length; row++){
-            for (int col = 0 ; col<grid[row].length ;col++){
+        int islands = 0;
+        int[][] traverse = new int[grid.length][grid[0].length];
+        for(int[] i :traverse) Arrays.fill(i,-1);
+        for(int row = 0 ; row<grid.length ; row++){
+            for(int col = 0 ; col<grid[0].length ; col++){
                 if(grid[row][col]=='1'){
-                   grid= calc1(row,col, grid);
-                    count++;  
-                } 
-                
+                    find(grid, row, col );
+                    islands++;
                 }
-        }    
-        
-     return count;
-    }
-
-    
-    
-
-    public static char[][] calc1(int r , int c, char[][] grid ){
-    grid[r][c]='0';
-        if( (r+1)<grid.length && grid[r+1][c]=='1')
-            grid =calc1(r+1 , c , grid);
-            
-        if( (r-1)>=0 && grid[r-1][c]=='1')
-            grid =calc1(r-1 , c , grid);
-            
-        if( (c+1)<grid[r].length && grid[r][c+1]=='1')
-            grid =calc1(r , c+1 , grid);
-            
-        if( (c-1)>=0 && grid[r][c-1]=='1')
-            grid =calc1(r , c-1 , grid);
-    
-      return grid;      
             }
+        }
+        return islands;
+    }
+        public static char[][] find(char[][] grid , int r, int c){
+            grid[r][c]=0;
+            if(r+1<grid.length && grid[r+1][c]=='1')find(grid, r+1,c);
+            if(c+1<grid[0].length && grid[r][c+1]=='1')find(grid, r,c+1);
+            if(r-1>=0 && grid[r-1][c]=='1')find(grid, r-1,c);
+            if(c-1>=0 && grid[r][c-1]=='1')find(grid, r,c-1);
+            return grid;
+        } 
+        }
+
     
-    
-}
-
-
-
 
