@@ -19,8 +19,6 @@ class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         map = new HashMap<>();
         for(int i = 0 ; i<inorder.length ; i++)map.put(inorder[i],i);
-        // List<Integer> pre = Arrays.stream(preorder).boxed().collect(Collectors.toList());
-        // List<Integer> in = Arrays.stream(inorder).boxed().collect(Collectors.toList());
         preorderindex =0 ;
         return makeTree(preorder ,inorder, 0 , inorder.length-1);
     }
@@ -31,14 +29,8 @@ class Solution {
         TreeNode root = new TreeNode(pre[preorderindex]);
         preorderindex++;
         int mid = map.get(root.val);
-        // System.out.println(mid);
-        // if (mid>=0){
-        
         root.left = makeTree(pre, in, start,mid -1);
-        
-        // }if(mid>=0){
         root.right = makeTree(pre, in, mid+1 , end);
-        // }
         return root;
     }
 
