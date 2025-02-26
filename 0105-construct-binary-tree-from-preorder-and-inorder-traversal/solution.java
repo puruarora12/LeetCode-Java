@@ -14,28 +14,32 @@
  * }
  */
 class Solution {
+    static HashMap<Integer, Integer> map;
+    static int preorderindex ;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        List<Integer> pre = Arrays.stream(preorder).boxed().collect(Collectors.toList());
-        List<Integer> in = Arrays.stream(inorder).boxed().collect(Collectors.toList());
-
-        return makeTree(pre ,in);
+        map = new HashMap<>();
+        for(int i = 0 ; i<inorder.length ; i++)map.put(inorder[i],i);
+        // List<Integer> pre = Arrays.stream(preorder).boxed().collect(Collectors.toList());
+        // List<Integer> in = Arrays.stream(inorder).boxed().collect(Collectors.toList());
+        preorderindex =0 ;
+        return makeTree(preorder ,inorder, 0 , inorder.length-1);
     }
 
-    public static TreeNode makeTree(List<Integer> pre , List<Integer> in){
-        if(pre.size()==0 )return null;
-        if(in.size()==0 )return null;
+    public static TreeNode makeTree(int[] pre ,int[] in,  int start, int end){
+        if(start>end) return null;
 
-        TreeNode root = new TreeNode(pre.get(0));
+        TreeNode root = new TreeNode(pre[preorderindex]);
+        preorderindex++;
+        int mid = map.get(root.val);
+        // System.out.println(mid);
+        // if (mid>=0){
         
-        int mid = in.indexOf(pre.get(0));
+        root.left = makeTree(pre, in, start,mid -1);
         
-        if (mid>=0){
-        
-        root.left = makeTree(pre.subList(1 , mid+1 ) , in.subList(0 , mid+1));
-        
-        }if(mid>=0){
-        root.right = makeTree(pre.subList(mid+1 , pre.size())  , in.subList( mid+1, in.size()));
-        }return root;
+        // }if(mid>=0){
+        root.right = makeTree(pre, in, mid+1 , end);
+        // }
+        return root;
     }
 
 
