@@ -1,8 +1,6 @@
 class Solution {
     public int numIslands(char[][] grid) {
         int islands = 0;
-        int[][] traverse = new int[grid.length][grid[0].length];
-        for(int[] i :traverse) Arrays.fill(i,-1);
         for(int row = 0 ; row<grid.length ; row++){
             for(int col = 0 ; col<grid[0].length ; col++){
                 if(grid[row][col]=='1'){
