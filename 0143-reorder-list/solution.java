@@ -10,33 +10,52 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        ArrayList<ListNode> ar =  new ArrayList<>();
         ListNode ans = head;
-        ListNode ret = head;
-        while(head!=null){
-            ar.add(head);
-            head=head.next;
-        }
-        int left  =1 ;
-        int right =ar.size()-1;
-        boolean c = true;
-        while(left<=right){
-         //System.out.println(ans.val);
-            if(c){
-                ans.next = ar.get(right);
-                right--;
-                c =false;
-            }else{
-                ans.next =ar.get(left);
-                left++;
-                c=true;
+        if(ans !=null || ans.next!=null){
+            ListNode slow =head ,  fast =head;
+            while(fast!=null && fast.next!=null) {
+                slow=slow.next ;
+                fast=fast.next.next;
             }
-            ans=ans.next;
-            //System.out.println("ans val after "+ans.val+"  left "+left+"  right "+right);
+            // System.out.println(slow+ "  "+fast);
+            // System.out.println(slow.val+"  "+fast.val);
+            System.out.println("check");
+            //reverse list
+            ListNode revhead = reverse(slow);
+            //merge reversed and start list
+            ListNode temp =revhead;
+            // while(temp.next!=null){
+            //     System.out.println(temp.val);
+            //     temp=temp.next;
+            // }
+            while(revhead!=null && revhead.next!=null){
+                ListNode temp1 = head.next;
+                ListNode temp2 = revhead.next;
+
+                head.next = revhead;
+                revhead.next = temp1;
+                temp1= temp1.next;
+                // temp2=temp2.next;
+                head =revhead.next;
+                revhead = temp2;
+            }
             
-            
+           
+        
+        // return ans;
         }
-        ans.next =null;
-        //return ret;
+    }
+
+    public static ListNode reverse(ListNode head){
+        ListNode prev= null;
+        // ListNode temp =head;
+        while(head!=null){
+            ListNode tem =head.next;
+            head.next =prev;
+            
+            prev =head;
+            head=tem;
+        }
+        return prev;
     }
 }
