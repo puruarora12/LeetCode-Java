@@ -17,17 +17,10 @@ class Solution {
                 slow=slow.next ;
                 fast=fast.next.next;
             }
-            // System.out.println(slow+ "  "+fast);
-            // System.out.println(slow.val+"  "+fast.val);
-            System.out.println("check");
-            //reverse list
             ListNode revhead = reverse(slow);
             //merge reversed and start list
             ListNode temp =revhead;
-            // while(temp.next!=null){
-            //     System.out.println(temp.val);
-            //     temp=temp.next;
-            // }
+
             while(revhead!=null && revhead.next!=null){
                 ListNode temp1 = head.next;
                 ListNode temp2 = revhead.next;
