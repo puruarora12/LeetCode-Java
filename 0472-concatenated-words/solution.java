@@ -3,13 +3,13 @@ class Solution {
     static HashMap<String, Boolean> data;
     public List<String> findAllConcatenatedWordsInADict(String[] words) {
         // List<String> w = new ArrayList<>(Arrays.asList(words));
-        HashMap<Integer, Set<String>> map = new HashMap<>();
+        // HashMap<Integer, Set<String>> map = new HashMap<>();
         data = new HashMap<>();
          for(String word: words){
             int len = word.length();
-            Set<String> s = map.getOrDefault(len, new HashSet<>());
-            s.add(word);
-            map.put(len, s);
+            // Set<String> s = map.getOrDefault(len, new HashSet<>());
+            // s.add(word);
+            data.put(word, true);
         }
         // Collections.sort(w ,(a1,a2) -> Integer.compare(a1.length(), a2.length()));
         // Set<String> set=  new HashSet<>();
@@ -17,8 +17,8 @@ class Solution {
         List<String> ans = new ArrayList<String>();
         // System.out.println("map "+map);
         for(String word :words){
-           
-            if(check(word, map, word))ans.add(word);
+           data.remove(word);
+            if(check(word, word))ans.add(word);
             data.put(word,true);
             //  System.out.println("after word "+word+"  "+data);
             // set.add(word);
@@ -29,11 +29,11 @@ class Solution {
 
         return ans;
     }
-    public static boolean check(String word, HashMap<Integer, Set<String>> map, String originalWord){
+    public static boolean check(String word, String originalWord){
         int len = word.length();
         // System.out.println("Recurse "+word+ " len "+len);
         if(data.containsKey(word))return data.get(word);
-        if( map.containsKey(word.length()) && map.get(len).contains(word) && !word.equals(originalWord)) return true;
+        // if( map.containsKey(word.length()) && map.get(len).contains(word) && !word.equals(originalWord)) return true;
         if(word.length()==1) return false;
 
         for(int i = 0 ; i<word.length() ; i++){
@@ -42,8 +42,9 @@ class Solution {
             // System.out.println(fsub+ "  "+bsub);
 
             if(  ( 
-                ( map.containsKey(fsub.length()) && map.containsKey(bsub.length()) &&map.get(fsub.length()).contains(fsub) && map.get(bsub.length()).contains(bsub) )  ||
-                 (check(fsub, map, originalWord) && check(bsub, map, originalWord) ) 
+                ( data.containsKey(fsub) && data.containsKey(bsub) &&
+                data.get(fsub) && data.get(bsub) )  ||
+                 (check(fsub, originalWord) && check(bsub, originalWord) ) 
             ) 
                 ){
                     // System.out.println("Found "+word);
