@@ -10,7 +10,7 @@ class Solution {
         List<String> ans = new ArrayList<String>();
         for(String word :words){
            data.remove(word);
-            if(check(word, word))ans.add(word);
+            if(check(word))ans.add(word);
             data.put(word,true);
             //  System.out.println("after word "+word+"  "+data);
         }
@@ -19,7 +19,7 @@ class Solution {
 
         return ans;
     }
-    public static boolean check(String word, String originalWord){
+    public static boolean check(String word){
        
         if(data.containsKey(word))return data.get(word);
         if(word.length()==1) return false;
@@ -29,12 +29,7 @@ class Solution {
             String bsub = word.substring(i,word.length());
             // System.out.println(fsub+ "  "+bsub);
 
-            if(  ( 
-                ( data.containsKey(fsub) && data.containsKey(bsub) &&
-                data.get(fsub) && data.get(bsub) )  ||
-                 (check(fsub, originalWord) && check(bsub, originalWord) ) 
-            ) 
-                ){
+            if(data.containsKey(fsub) && data.get(fsub) && check(bsub)){
                     // System.out.println("Found "+word);
                     data.put(word,true);
                     return true;
