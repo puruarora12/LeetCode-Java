@@ -10,16 +10,16 @@
 class Solution {
     HashMap<TreeNode, TreeNode> map ;
     List<Integer> ans;
-    
+    List<TreeNode> visited;
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         ans= new ArrayList<>();
         map = new HashMap<>();
-        List<TreeNode> visited= new ArrayList<>();
+        visited= new ArrayList<>();
         buildTree(root);
-        findNode(target, k, visited);
+        findNode(target, k);
         return ans;
     }
-    private void findNode(TreeNode root, int k,List<TreeNode> visited){
+    private void findNode(TreeNode root, int k){
         visited.add(root);
         // System.out.println("node is "+root.val+" k is "+k);
         if(k==0) { 
@@ -30,17 +30,17 @@ class Solution {
         if(root.left!=null && !visited.contains(root.left)) { 
             // System.out.println("processing left");
             // visited.add(root.left);
-            findNode(root.left, k-1,visited); 
+            findNode(root.left, k-1); 
         }
         if(root.right!=null && !visited.contains(root.right)){ 
             // System.out.println("processing right");
             // visited.add(root.right);
-            findNode(root.right, k-1,visited);
+            findNode(root.right, k-1);
         }
         if(map.containsKey(root) && !visited.contains(map.get(root))){
             //  System.out.println("processing parent");
             //  visited.add(map.get(root));
-             findNode(map.get(root), k-1,visited);
+             findNode(map.get(root), k-1);
         }
         return;
 
