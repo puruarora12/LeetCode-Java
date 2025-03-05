@@ -9,7 +9,6 @@ class Solution {
             
             if(setB.contains(A[index])) prev++;
             if(setA.contains(B[index]) || A[index]==B[index])prev++;
-            // System.out.println("index "+ index+ " A[index] "+A[index]+" B[index] "+B[index] + " set A "+setA+" setB "+setB+ " prev "+prev);
             ans[index]=prev;
             setA.add(A[index]);
             setB.add(B[index]);
