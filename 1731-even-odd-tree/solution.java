@@ -1,69 +1,23 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
 class Solution {
-    static Queue<TreeNode> q;
-    static Queue<Integer> ar;
     public boolean isEvenOddTree(TreeNode root) {
-        int depth  =0;
-        q= new LinkedList<TreeNode>();
-        ar= new LinkedList<Integer>();
-        if(root!=null){
-            q.add(root);
-            ar.add(0);
-                      }
-        return check( depth);
-        
-    }
-    
-    public static boolean check( int depth){
-        //int d = ar.peek();
-        int lval =0;
-        int d =depth;
-        if(d%2==0) lval=Integer.MIN_VALUE;
-        else lval=Integer.MAX_VALUE;
-        //System.out.println(" before while "+q.peek().val+"     "+d);
-        while(!q.isEmpty() && ar.peek()==d ){
-            TreeNode root = q.poll();
-            ar.poll();
-            if(d%2==0 && (root.val<=lval || root.val%2==0) ){ 
-                //System.out.println(d+" even  "+root.val+"     "+root.val%2+"     "+lval); 
-                return false;
+        if(root == null) return true;
+        Queue<TreeNode> q = new LinkedList();
+        q.add(root);
+        boolean even = true;
+        while(q.size() > 0) {
+            int size = q.size();
+            int prevVal = even ? Integer.MIN_VALUE : Integer.MAX_VALUE; // init preVal based on level even or odd
+			while(size-- > 0) { // level by level
+                root = q.poll();
+                if(even && (root.val % 2 == 0 || root.val <= prevVal)) return false; // invalid case on even level
+                if(!even && (root.val % 2 == 1 || root.val >= prevVal)) return false; // invalid case on odd level
+                prevVal = root.val; // update the prev value
+                if(root.left != null) q.add(root.left); // add left child if exist
+                if(root.right != null) q.add(root.right); // add right child if exist
             }
-            else if(d%2!=0 && (root.val>=lval || root.val%2!=0 )) {
-                //System.out.println(d+"  odd  "+root.val+"     "+root.val%2+"     "+lval);
-                return false;
-            }
-            else {
-                lval=root.val;
-                if(root.left!=null){ q.add(root.left); ar.add(depth+1);}
-                if(root.right!=null){q.add(root.right); ar.add(depth+1);}
-                
-                
-                //System.out.println("adding to: q peek "+q.peek().val+" ar peek "+ar.peek()+"   "+" lval "+lval);
-                
-            }
-            
-            
-            
-            //depth++;
-            
-            
-            
+            even = !even; // alter the levels
         }
-        if(!q.isEmpty())return check(d+1);
-            else return true;        
+        
+        return true;
     }
 }
