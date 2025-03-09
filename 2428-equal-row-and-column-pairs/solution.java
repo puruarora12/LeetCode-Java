@@ -1,10 +1,7 @@
 class Solution {
     public int equalPairs(int[][] grid) {
-        // int row[]=new int[grid.length];
-        
         HashMap<String ,Integer> set = new HashMap<>();
        int count =0;
-        boolean isEqual =true;
         for(int i =0 ; i<grid.length ; i++){
             int[] col = new int[grid.length];
            for(int j =0 ; j<grid.length ; j++){
