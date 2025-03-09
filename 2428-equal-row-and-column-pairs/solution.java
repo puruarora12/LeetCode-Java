@@ -12,7 +12,7 @@ class Solution {
         }
         for(int[] i:grid){
             String r=Arrays.toString(i);
-            if(set.containsKey(r))count+=set.get(r);
+            count+=set.getOrDefault(r,0);
          
         
         }
