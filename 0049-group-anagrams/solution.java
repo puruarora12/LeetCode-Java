@@ -6,14 +6,14 @@ class Solution {
             char[] chrs = s.toCharArray();
             Arrays.sort(chrs);
             String word = new String(chrs);
-            if(!map.containsKey(word)){
-                List<String> ls = new ArrayList<>();
+            if(map.containsKey(word)){
+            map.get(word).add(s);
+            }else{
+                 List<String> ls = new ArrayList<>();
                 ls.add(s);
                 map.put(word,ls);
                 ans.add(ls);
-
-            }else
-            map.get(word).add(s);
+            }
             
         }
        
