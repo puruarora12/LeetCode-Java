@@ -6,8 +6,8 @@ class Solution {
         for(int i :set){
             int len =1;
             int num = i;
-            if(!set.contains(num+1)){
-                while(set.contains(--num))len++;
+            if(!set.contains(num-1)){
+                while(set.contains(++num))len++;
             }
             max =Math.max(max, len);
         }
