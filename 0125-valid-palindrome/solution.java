@@ -1,18 +1,16 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        ArrayList<Character> ar = new ArrayList<>();
-        for(int i = 0 ; i<s.length() ; i++){
-            if(s.charAt(i)>='A'&& s.charAt(i)<='Z') ar.add((char)(s.charAt(i)+32));
-            else if(s.charAt(i)>='a' && s.charAt(i)<='z')ar.add(s.charAt(i));
-            else if(s.charAt(i)>='0' && s.charAt(i)<='9') ar.add(s.charAt(i));
-            else continue;
-            
+        StringBuilder sb = new StringBuilder(); 
+        for(char i : s.toCharArray()){
+            if(i>='a' && i<='z' ){
+                sb.append(i);
+            }else if(i>='A' && i<='Z'){
+                sb.append((char)(i-'A'+'a'));
+            }else if(i >='0' && i<='9'){
+                sb.append(i);
+            }
         }
-        
-        ArrayList<Character> ar2 = new ArrayList<>(ar);
-        Collections.reverse(ar);
-        if(ar.equals(ar2)) return true;
-        else return false;
-        
+        // System.out.println(sb.toString());
+        return sb.toString().equals(sb.reverse().toString()) ? true:false ;
     }
 }
