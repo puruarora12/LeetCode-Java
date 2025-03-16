@@ -6,9 +6,9 @@ class Solution {
         for(int i =0 ; i<nums2.length ; i++)
             ar[nums1.length+i]=nums2[i];
        Arrays.sort(ar);
-        for(int e: ar)
-            System.out.print(e);
-        System.out.println();
+        // for(int e: ar)
+            // System.out.print(e);
+        // System.out.println();
         if (ar.length%2!=0)
             return (double)ar[(int)Math.ceil(ar.length/2)];
         else
