@@ -1,22 +1,24 @@
 class RandomizedSet {
+    HashSet<Integer> set;
     List<Integer> ls;
     public RandomizedSet() {
+        set = new HashSet<>() ; 
         ls= new ArrayList<>();
     }
     
     public boolean insert(int val) {
-        if(!ls.contains(val)){ ls.add(val); return true;}
-        return false;
+        if(!set.contains(val))ls.add(val);
+        return set.add(val);
 
     }
     
     public boolean remove(int val) {
-        if(ls.contains(val)){ls.remove(Integer.valueOf(val)) ;  return true;}
-        return false;
+        if(set.contains(val))ls.remove(Integer.valueOf(val));
+        return set.remove(val);
     }
     
     public int getRandom() {
-        int random = (int)(Math.random()*ls.size());
+        int random = (int)(Math.random()*set.size());
         // System.out.println(random+" "+ ls);
         return ls.get(random);
     }
