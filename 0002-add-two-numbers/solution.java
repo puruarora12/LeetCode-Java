@@ -10,31 +10,44 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0);
-        ListNode n = dummy;
-        
-        int carry = 0;
-        while(l1!=null || l2!= null){
-            int l1val = (l1==null) ? 0 : l1.val;
-            int l2val = (l2==null) ? 0 : l2.val;
-            int sum=(l1val + l2val + carry)%10;
-            carry = (l1val + l2val + carry)/10;
-            ListNode l3 = new ListNode(sum);
-            
-            n.next=l3; 
-            if (l1!=null) l1= l1.next;
-            if (l2!=null) l2= l2.next;
-            n=n.next;
-            
-                
-
-            
+        int carry =0 ;
+        ListNode ans = l1;
+        ListNode prev1 = l1;
+        ListNode prev2= l2;
+        while(l1!=null && l2!=null){
+            l1.val = l1.val+l2.val+carry;
+            if(l1.val>9){
+                l1.val%=10;
+                carry=1;
+            }else carry=0;
+            prev1= l1;
+            prev2=l2;
+            l2=l2.next;
+            l1=l1.next;
         }
-        if (carry!=0){
-            n.next = new ListNode(carry);
-            n=n.next;
+        while(l1!=null ){
+            l1.val = l1.val+carry;
+            if(l1.val>9){
+                l1.val%=10;
+                carry=1;
+            }else carry=0;
+            prev1=l1;
+            l1=l1.next;
         }
-            
-        return dummy.next;
+        if(l2!=null)prev1.next =l2;
+        while(l2!=null ){
+            l2.val = l2.val+carry;
+            if(l2.val>9){
+                l2.val%=10;
+                carry=1;
+            }else carry=0;
+            prev2=l2;
+            l2=l2.next;
+        }
+        ListNode last = new ListNode(1);
+        if(carry==1 ) 
+            if(prev1.next==null)prev1.next=last;
+            else prev2.next=last;
+        return ans;
     }
 }
