@@ -26,13 +26,11 @@ class Solution {
 
             int startRoot = find(parent, start);
             int endRoot = find(parent, end);
-
-            if(startRoot!=endRoot)results[i]=-1;
-            else{
-                if(start==end) results[i]=0;
+            if(start==end)results[i]=0;
+            else if(startRoot!=endRoot)results[i]=-1;
                 else{
                     results[i]=cost[find(parent, start)];
-                }
+                
             }
         
         }
