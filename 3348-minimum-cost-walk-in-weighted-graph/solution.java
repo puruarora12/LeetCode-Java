@@ -1,4 +1,8 @@
 class Solution {
+    private int find(int[] parent, int node){
+      if(parent[node]!=node)parent[node] =find(parent, parent[node]);
+      return parent[node];
+    }
     public int[] minimumCost(int n, int[][] edges, int[][] query) {
         int[] parent= new int[n];
         for(int i =0 ; i<n ; i++)parent[i]=i;
@@ -16,8 +20,6 @@ class Solution {
                 cost[endRoot]&=cost[startRoot];
                 parent[startRoot]=endRoot;
             }
-
-
         }
 
         int results[] = new int[query.length];
@@ -27,20 +29,12 @@ class Solution {
            
             if(start==end)results[i]=0;
             else if(find(parent, start)!=find(parent, end))results[i]=-1;
-                else{
-                    results[i]=cost[find(parent, start)];
+            else results[i]=cost[find(parent, start)];
                 
-            }
-        
         }
         return results;
         
     }
-
-    private int find(int[] parent, int node){
-      if(parent[node]!=node)parent[node] =find(parent, parent[node]);
-      return parent[node];
-    }
-    
+  
 
 }
