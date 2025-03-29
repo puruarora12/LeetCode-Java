@@ -1,19 +1,20 @@
 class Solution {
     public boolean exist(char[][] board, String word) {
-        Queue<int[]> q = new LinkedList<>();
+        // Queue<int[]> q = new LinkedList<>();
         int n =board.length;
         int m  = board[0].length;
     
         for(int i = 0 ; i <n  ; i++){
             for(int j = 0 ; j <m ; j++){
-                if(board[i][j]==word.charAt(0))q.offer(new int[]{i,j});
+                if(board[i][j]==word.charAt(0) && dfs(board, word, i,j , 0, n,m))return true;
             }
         }
-        while(!q.isEmpty()){
-            if(dfs(board, word, q.peek()[0],q.peek()[1] , 0, n,m)) return true;
-            q.poll();
-        }
         return false;
+        // while(!q.isEmpty()){
+        //     if() return true;
+        //     q.poll();
+        // }
+        // return false;
 
     }
 
