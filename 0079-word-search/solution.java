@@ -10,20 +10,20 @@ class Solution {
             }
         }
         while(!q.isEmpty()){
-            if(dfs(board, word, q.peek()[0],q.peek()[1] , 0, n,m, new boolean[n][m])) return true;
+            if(dfs(board, word, q.peek()[0],q.peek()[1] , 0, n,m)) return true;
             q.poll();
         }
         return false;
 
     }
 
-     private boolean dfs(char[][] board, String word,int i , int j, int index , int n , int m, boolean[][] newvisited){
+     private boolean dfs(char[][] board, String word,int i , int j, int index , int n , int m){
            
 
 
             // if(visited.contains(new int[]{i,j}))return false;
             
-            if(i<0  || i>=n || j<0 || j>=m || index==word.length() || newvisited[i][j] || (index==word.length()-1 && board[i][j]!=word.charAt(index) ) ) return false;
+            if(i<0  || i>=n || j<0 || j>=m || index==word.length() || (index==word.length()-1 && board[i][j]!=word.charAt(index) ) ) return false;
             //  System.out.println(index+"  char at "+word.charAt(index) +"  curr char "+board[i][j]+"   i j "+i+" "+j);
             
             if(index==word.length()-1) return true;
@@ -32,10 +32,10 @@ class Solution {
                char temp = board[i][j];
                board[i][j]='#';
                 
-            if(dfs(board, word,i , j+1 , index+1, n,m , newvisited) ||
-            dfs(board, word, i+1 , j , index+1, n,m, newvisited) ||
-            dfs(board, word, i , j-1 , index+1, n,m, newvisited) ||
-            dfs(board, word, i-1 , j , index+1, n,m, newvisited)
+            if(dfs(board, word,i , j+1 , index+1, n,m ) ||
+            dfs(board, word, i+1 , j , index+1, n,m) ||
+            dfs(board, word, i , j-1 , index+1, n,m) ||
+            dfs(board, word, i-1 , j , index+1, n,m)
              )return true;
             board[i][j]=temp;
             }
