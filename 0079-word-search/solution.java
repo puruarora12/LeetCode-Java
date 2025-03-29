@@ -29,14 +29,15 @@ class Solution {
             if(index==word.length()-1) return true;
             if(board[i][j]==word.charAt(index)){
             // for(int x =0 ; x<n; x++) newvisited[x]=Arrays.copyOf(visited[x], m);
-                newvisited[i][j]=true;
+               char temp = board[i][j];
+               board[i][j]='#';
                 
             if(dfs(board, word,i , j+1 , index+1, n,m , newvisited) ||
             dfs(board, word, i+1 , j , index+1, n,m, newvisited) ||
             dfs(board, word, i , j-1 , index+1, n,m, newvisited) ||
             dfs(board, word, i-1 , j , index+1, n,m, newvisited)
              )return true;
-             else newvisited[i][j]=false;
+            board[i][j]=temp;
             }
 
             return false;
