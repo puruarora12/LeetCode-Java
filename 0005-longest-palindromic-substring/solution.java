@@ -5,19 +5,19 @@ class Solution {
         int max = 0;
         for(int i = 0 ;  i<s.length ; i++){
             int[] currIndex = palin(s , i , i);
-            System.out.println(currIndex[0]+"   "+currIndex[1]+"  for "+i+"  "+i);
+            // System.out.println(currIndex[0]+"   "+currIndex[1]+"  for "+i+"  "+i);
             if(currIndex[1]-currIndex[0]+1>max){
                 max = currIndex[1]-currIndex[0]+1;
                 index= currIndex;
             }
-            System.out.println("curr max "+max);
+            // System.out.println("curr max "+max);
             currIndex = palin(s , i , i+1);
-            System.out.println(currIndex[0]+"   "+currIndex[1]+"  for "+i+"  "+(i+1));
+            // System.out.println(currIndex[0]+"   "+currIndex[1]+"  for "+i+"  "+(i+1));
             if(currIndex[1]-currIndex[0]+1>max){
                 max = currIndex[1]-currIndex[0]+1;
                 index= currIndex;
             }
-            System.out.println("curr max "+max);
+            // System.out.println("curr max "+max);
         }
         return pstring.substring(index[0], index[1]+1);
 
