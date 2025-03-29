@@ -23,13 +23,10 @@ class Solution {
 
             // if(visited.contains(new int[]{i,j}))return false;
             
-            if(i<0  || i>=n || j<0 || j>=m || index==word.length() || newvisited[i][j] ) return false;
+            if(i<0  || i>=n || j<0 || j>=m || index==word.length() || newvisited[i][j] || (index==word.length()-1 && board[i][j]!=word.charAt(index) ) ) return false;
             //  System.out.println(index+"  char at "+word.charAt(index) +"  curr char "+board[i][j]+"   i j "+i+" "+j);
             
-            if(index==word.length()-1){ 
-                if(board[i][j]==word.charAt(index)){  return true;}
-                else {return false;}
-            }
+            if(index==word.length()-1) return true;
             if(board[i][j]==word.charAt(index)){
             // for(int x =0 ; x<n; x++) newvisited[x]=Arrays.copyOf(visited[x], m);
                 newvisited[i][j]=true;
