@@ -20,13 +20,13 @@ HashMap<Integer, node> map = new HashMap<>();
         head.next = tail;
         tail.prev = head;
     }
-    public void print(){
-        node temp =head;
-        while(temp!=null){
-            System.out.println("key "+temp.key + "   val  "+temp.val);
-            temp =temp.next;
-        }
-    }
+    // public void print(){
+    //     node temp =head;
+    //     while(temp!=null){
+    //         System.out.println("key "+temp.key + "   val  "+temp.val);
+    //         temp =temp.next;
+    //     }
+    // }
     public void remove(node n){
       
         node prevNode = n.prev;
