@@ -17,13 +17,13 @@ class Solution {
 
     }
 
-     private boolean dfs(char[][] board, String word,int i , int j, int index , int n , int m, boolean[][] visited){
+     private boolean dfs(char[][] board, String word,int i , int j, int index , int n , int m, boolean[][] newvisited){
            
 
 
             // if(visited.contains(new int[]{i,j}))return false;
             
-            if(i<0  || i>=n || j<0 || j>=m || index==word.length() || visited[i][j] ) return false;
+            if(i<0  || i>=n || j<0 || j>=m || index==word.length() || newvisited[i][j] ) return false;
             //  System.out.println(index+"  char at "+word.charAt(index) +"  curr char "+board[i][j]+"   i j "+i+" "+j);
             
             if(index==word.length()-1){ 
@@ -31,7 +31,6 @@ class Solution {
                 else {return false;}
             }
             if(board[i][j]==word.charAt(index)){
-             boolean[][] newvisited =visited;
             // for(int x =0 ; x<n; x++) newvisited[x]=Arrays.copyOf(visited[x], m);
                 newvisited[i][j]=true;
                 
