@@ -32,7 +32,7 @@ class Solution {
             }
             if(board[i][j]==word.charAt(index)){
              boolean[][] newvisited =visited;
-            for(int x =0 ; x<n; x++) newvisited[x]=Arrays.copyOf(visited[x], m);
+            // for(int x =0 ; x<n; x++) newvisited[x]=Arrays.copyOf(visited[x], m);
                 newvisited[i][j]=true;
                 
             if(dfs(board, word,i , j+1 , index+1, n,m , newvisited) ||
