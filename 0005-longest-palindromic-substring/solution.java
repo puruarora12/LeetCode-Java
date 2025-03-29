@@ -1,45 +1,35 @@
 class Solution {
-    public String longestPalindrome(String s) {
-        int len1 =0, len2 = 0 ; 
-        int temp = Integer.MIN_VALUE;
-        String ans = ""+s.charAt(0);
-        for (int i = 0; i<s.length()-1; i++){
-            String s1 = palin(i,i, s);
-            
-            String s2 ="";
-            if (s.charAt(i)==s.charAt(i+1))
-            s2 = palin(i,i+1,s);
-            
-           // System.out.println(s1+"   "+s2);
-            len1 =s1.length(); 
-            len2=s2.length();
-            
-            if (len1>temp){
-                ans = s1 ;
-                temp=len1;
+    public String longestPalindrome(String pstring) {
+        char[] s = pstring.toCharArray();
+        int index[] = new int[2];
+        int max = 0;
+        for(int i = 0 ;  i<s.length ; i++){
+            int[] currIndex = palin(s , i , i);
+            System.out.println(currIndex[0]+"   "+currIndex[1]+"  for "+i+"  "+i);
+            if(currIndex[1]-currIndex[0]+1>max){
+                max = currIndex[1]-currIndex[0]+1;
+                index= currIndex;
             }
-            if (len2>temp){
-                ans = s2 ;
-                temp =len2; 
+            System.out.println("curr max "+max);
+            currIndex = palin(s , i , i+1);
+            System.out.println(currIndex[0]+"   "+currIndex[1]+"  for "+i+"  "+(i+1));
+            if(currIndex[1]-currIndex[0]+1>max){
+                max = currIndex[1]-currIndex[0]+1;
+                index= currIndex;
             }
-                
+            System.out.println("curr max "+max);
         }
-        return ans ;
+        return pstring.substring(index[0], index[1]+1);
+
     }
-    
-    
-    public static String palin(int i ,int j , String s){
-       
-        while(i-1>=0 && j+1<s.length() && s.charAt(i-1)==s.charAt(j+1) ){
-                    i-- ; j++ ;
-                    //System.out.println(i+"   "+j);
+    private
+     int[] palin(char[] s , int i , int j ){
+        if( (i<0  ||  j>s.length-1) || i!=j && s[i]!=s[j])return new int[]{i,i};
+        while(i>0  &&  j<s.length-1 && s[i-1]==s[j+1]){
+            
+                i--; j++;
+        
         }
-        return s.substring(i,j+1);
+        return new int[]{i,j}; 
     }
-        
-        
-    
-    
-    
-    
 }
