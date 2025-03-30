@@ -9,11 +9,7 @@ class Solution {
                 dp[i]=true; 
                 last = i;
             }
-            else if(i+nums[i]<last)dp[i]=false; 
-            // else { 
-            //     dp[i]=dp[nums[i]+i];
-            //     last =dp[i] ? i :last;
-            // }
+            else dp[i]=false; 
         }
         return dp[0];
     }
