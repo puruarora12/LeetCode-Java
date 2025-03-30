@@ -4,7 +4,7 @@ class Solution {
         long total = 0, k = 0, n = A.size();
         for (int i = 0; i < n; i++) {
             total += A.get(i);
-            if (total >= (k + 1) * (k + 2) / 2)
+            if (total >= (k+2) * (k + 1) / 2)
                 k++;
         }
         return (int)k;
