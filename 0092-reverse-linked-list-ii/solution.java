@@ -9,50 +9,52 @@
  * }
  */
 class Solution {
-    static ListNode lastone ; 
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if (head == null )
-            return null;
-        if (left==right)
-            return head;
-        
-        //int count =1;
-        ListNode ans = head; 
-        ListNode temp =null; 
-        for(int i =1 ; i<left ; i++){
-            temp =head; 
-            head=head.next;
-        }//System.out.println("        "+head.val);
-        //ListNode temp =head; 
-        ListNode reved = rev(head , right-left );
-        if (temp!=null)
-        temp.next=reved;
-        else
-            temp  =ans =reved;
-        
-        for(int i = 0  ; i <right-left+1 ; i++ ){
-           // System.out.println(reved.val);
-            //reved=reved.next;
-            temp=temp.next;
+        if(head==null || head.next==null  || left==right) return head;
+
+        ListNode toReturn = head;
+        ListNode prev = null;
+        ListNode next = null;
+        int diff= right-left;
+        while(left-->1 && head!=null){
+            prev= head;
+            head = head.next;
             
         }
-        temp.next = lastone;
-       return ans;
-        
-        
-    }
-    static ListNode rev(ListNode head , int right){
-        int count = 0 ;
-        ListNode prev = head;
-        ListNode next = head ;
-        //
-       while(count++<=right && head!=null){
-            next=head.next;
-            head.next = prev;
-            prev = head ;
-            head = next ;
-           lastone = head;
+        ListNode leftNode = head;
+        // System.out.println(leftNode.val);
+        while(diff-->0 && head!=null){
+            // prev= head;
+            head = head.next;
+            
         }
-        return prev;
+        
+        ListNode rightNode = head;
+        // System.out.println(rightNode.val);
+        next = head.next;
+        rightNode.next = null;
+        
+        // System.out.println(leftNode.val +"     "+rightNode.val);
+        if(prev!=null)
+            prev.next = reverse(leftNode, rightNode);
+        else
+            prev=toReturn=reverse(leftNode,rightNode);
+        while(prev.next!=null) prev =prev.next;
+        prev.next=  next;
+        return toReturn;
+
+
+    }
+    private ListNode reverse(ListNode left , ListNode right){
+        ListNode prev = null;
+    
+        while(left!=null){
+            ListNode temp = left.next ;
+            left.next = prev;
+            prev= left;
+            left =temp;
+        }
+        
+        return right;
     }
 }
