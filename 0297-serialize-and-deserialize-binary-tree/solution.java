@@ -38,9 +38,6 @@ public class Codec {
     public TreeNode deserialize(String data) {
         if(data.length()==0)return null;
         String nodes[] = data.split("/");
-        int level=0;
-        // TreeNode root = new TreeNode();
-        boolean rootSet =false;
         Queue<TreeNode> q = new LinkedList<>();
         int index = 1;
         TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
@@ -74,7 +71,6 @@ public class Codec {
                 index +=2;
                 
             }
-            level++;
         }
         return root;        
         
