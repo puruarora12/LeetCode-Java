@@ -24,8 +24,8 @@ class Solution {
             
             // System.out.println("to swap "+nums[index]+"  with "+nums[index2]);
             swap(nums, index , index2);
-
-            reverse(nums, index+1);
+            Arrays.sort(nums, index+1 , nums.length);
+            // reverse(nums, index+1);
         
     }
     private void swap(int[] nums, int index1 ,int index2){
