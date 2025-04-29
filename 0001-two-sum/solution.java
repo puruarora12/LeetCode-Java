@@ -10,7 +10,7 @@ class Solution {
                 System.out.println(map.get(target-nums[i])) ;                                   
                                                  pre = i;
                                                   nex = map.get(nums[i]);
-                                                  break;
+                                                 break;
                                                  }
             else map.put((target-nums[i] ), i);
             
