@@ -14,10 +14,8 @@ class Solution {
                                                  }
             else map.put((target-nums[i] ), i);
             
-            //for(int j : map.keySet()) System.out.println(j+"    "+map.get(j));
-            //System.out.println(" ////// ");
+        
         }
-        //System.out.println(pre+"  "+nex);
         return new int[]{pre ,nex};
     }
 }
