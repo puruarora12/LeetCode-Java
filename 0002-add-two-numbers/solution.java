@@ -47,7 +47,7 @@ class Solution {
         ListNode last = new ListNode(1);
         if(carry==1 ) 
             if(prev1.next==null)prev1.next=last;
-            else prev2.next=last;
+            else prev2.next=last; //type here
         return ans;
     }
 }
