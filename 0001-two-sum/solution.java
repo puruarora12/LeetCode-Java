@@ -11,7 +11,7 @@ class Solution {
                                                  pre = i;
                                                   nex = map.get(nums[i]);
                                                  break;
-                                                 }//typing something here
+                                                 }
             else map.put((target-nums[i] ), i);
             
             //for(int j : map.keySet()) System.out.println(j+"    "+map.get(j));
