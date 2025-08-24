@@ -8,7 +8,7 @@ class Solution {
                     edge= true;
                     helper(board, i , j, region);
                     if( edge) for (String x: region) board[Integer.parseInt(x.split(",")[0])][Integer.parseInt(x.split(",")[1])]='X';
-                    System.out.println(region);
+                    // System.out.println(region);
                 }
             }
         }
@@ -16,10 +16,10 @@ class Solution {
 
    public static int[][] dirs = new int[][]{{1,0} ,{-1,0}, {0,1}, {0,-1}}; 
    public static void helper(char board[][],  int i , int j , Set<String> region){
-        System.out.println(i+"       "+j);
+        // System.out.println(i+"       "+j);
         if(i==0 || i==board.length-1 || j==0 || j==board[i].length-1) {edge= false;return ;}
         region.add(i+","+j);
-        System.out.println("region added");
+        // System.out.println("region added");
         // region.add(new int[]{100,100});
         // System.out.println(region.contains(new int[]{100,100}));
         for( int[] dir : dirs){
@@ -27,7 +27,7 @@ class Solution {
 
     
         }
-        System.out.println("returning true");
+        // System.out.println("returning true");
         return ;
         
    } 
