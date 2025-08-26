@@ -3,9 +3,12 @@ class Solution {
         HashMap<String, List<String>> map= new HashMap<>();
         List<List<String>> ans = new ArrayList<>();
         for(String s: strs){
-            char[] chrs = s.toCharArray();
-            Arrays.sort(chrs);
-            String word = new String(chrs);
+            int[] count = new int[26];
+            for (char c :s.toCharArray()){
+                count[c-'a']++;
+            }
+            // Arrays.sort(chrs);
+            String word = Arrays.toString(count);
             if(map.containsKey(word)){
             map.get(word).add(s);
             }else{
