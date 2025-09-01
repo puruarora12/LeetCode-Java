@@ -1,22 +1,29 @@
 class Solution {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        List<List<String>> ans =  new ArrayList<>();
-        TreeMap<String, Integer>map = new TreeMap<>();
         Arrays.sort(products);
-        List<String> productList =Arrays.asList(products);
-        for(int i =0 ; i<products.length ; i++)map.put(products[i],i);
+        List<List<String>> ans = new ArrayList<>();
+        // List<String> matches = new ArrayList<>();
+        HashMap<String, List<String>> map = new HashMap<>();
+        map.put(".", Arrays.asList(products));
+        String word = ".";
+        String tosearch = "";
+        for (char  i : searchWord.toCharArray()){
+            tosearch+=i;
+            List<String> preMatches = map.get(word);
+            List<String> matches = new ArrayList<>();
+            for(String match : preMatches){
+                if (match.startsWith(tosearch))
+                    matches.add(match);
+                
+            }
+            List<String> toadd = new ArrayList<>();
+            for(int index =0 ; index<matches.size() && index<3 ; index++ )toadd.add(matches.get(index));
+            ans.add(toadd);
+            word+=i;
+            map.put(word ,matches);
 
-        String k = "";
-        for(char c: searchWord.toCharArray()){
-            k+=c;
-            String ceil = map.ceilingKey(k);
-            String floor = map.floorKey(k+"~");
-            if(ceil==null  || floor==null) break;
-            ans.add(productList.subList(map.get(ceil) , Math.min(map.get(ceil)+3 ,  map.get(floor)+1) ));
+           
         }
-        while (ans.size() < searchWord.length()) ans.add(new ArrayList<>());
-
         return ans;
-
     }
 }
